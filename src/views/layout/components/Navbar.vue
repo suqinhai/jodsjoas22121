@@ -1,15 +1,6 @@
 <template>
     <!-- 顶部 -->
     <div class="header">
-        <!-- 折叠按钮 -->
-        <div class="collapse-btn" @click="collapseChage">
-            <el-icon v-if="sidebar.collapse">
-                <Expand />
-            </el-icon>
-            <el-icon v-else>
-                <Fold />
-            </el-icon>
-        </div>
         <div class="logo">{{$t('商户后台管理系统')}}</div>
         <div class="timeZone" v-if="currentTime">
             <span class="currentTime">{{ currentTime }}</span>
@@ -160,7 +151,7 @@
 
 <script setup>
 import { ref, defineAsyncComponent, onMounted, computed, onBeforeUnmount, defineEmits, watch } from 'vue'
-import useSidebarStore from '@/store/sidebar'
+import useSidebarStore from '@/store/sidebar' // 保留兼容
 import userStore from '@/store/user'
 import commonStore from '@/store/common'
 import tagsStore from '@/store/tags'
@@ -196,7 +187,7 @@ const onlineData = ref({
 });
 const router = useRouter()
 const route = useRoute()
-const sidebar = useSidebarStore()
+const sidebar = useSidebarStore() // 保留兼容
 const userData = userStore()
 const commonData = commonStore()
 const tagsData = tagsStore()
@@ -412,20 +403,11 @@ const getRedDotTips = () => {
     display: flex;
 }
 
-.collapse-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    float: left;
-    padding: 0 21px;
-    cursor: pointer;
-}
-
 .header .logo {
-    float: left;
-    width: 250px;
-    line-height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    white-space: nowrap;
 }
 
 .header-right {

@@ -2,8 +2,8 @@
     <!-- <div> -->
     <!-- <Navbar v-if="!isNeedBinding"></Navbar> -->
     <Navbar v-if="userData.menuList.length && !isNeedBinding" @reload="reload"></Navbar>
-    <Sidebar v-if="userData.menuList.length && !isNeedBinding"></Sidebar>
-    <div v-if="userData.menuList.length && !isNeedBinding" class="content-box" :class="{ 'content-collapse': sidebarData.collapse }">
+    <TopMenu v-if="userData.menuList.length && !isNeedBinding"></TopMenu>
+    <div v-if="userData.menuList.length && !isNeedBinding" class="content-box content-top-menu">
         <TagsView></TagsView>
         <div class="content" v-loading="loading">
             <router-view v-slot="{ Component }" v-if="state.isRouterAlive">
@@ -58,7 +58,7 @@ const MerchantSiteSelect = defineAsyncComponent(() => import('@/components/Merch
 const MemberDetail = defineAsyncComponent(() => import('@/components/MemberDetail/index.vue'))
 
 const Navbar = defineAsyncComponent(() => import('./components/Navbar.vue'))
-const Sidebar = defineAsyncComponent(() => import('./components/Sidebar.vue'))
+const TopMenu = defineAsyncComponent(() => import('./components/TopMenu.vue'))
 const TagsView = defineAsyncComponent(() => import('./components/TagsView.vue'))
 const NotificationMessage = defineAsyncComponent(() => import('./components/NotificationMessage.vue'))
 const BigRRemindMassage = defineAsyncComponent(() => import('./components/BigRRemindMassage.vue'))
@@ -69,7 +69,7 @@ const TemplateTipsDialog = defineAsyncComponent(() => import('./components/Templ
 const BindingGoogleCaptcha = defineAsyncComponent(() => import('./components/BindingGoogleCaptcha.vue'))
 const ComplaintRemindDialog = defineAsyncComponent(() => import('./components/ComplaintRemindDialog.vue'))
 
-const sidebarData = sidebarStore()
+const sidebarData = sidebarStore() // 保留用于其他逻辑兼容
 const tagsData = tagsStore()
 const commonData = commonStore()
 const userData = userStore()
