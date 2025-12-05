@@ -1,0 +1,151 @@
+<template>
+    <!-- 会员调控-返奖率预设列表-新增 -->
+    <Dialog ref="dialog" :width="$locale == 'zh' ? 550 : 600" :title="$t('新增')" top="10vh" buttonCenter @confirm="handleSubmit(deployFormRef)"
+        @cancel="cancel">
+        <div class="pr">
+            <div class="control-rule-issue pa" v-if="isShow">
+                <el-icon class="pointer" :size="24" @click="emits('showExplain')">
+                    <QuestionFilled />
+                </el-icon>
+            </div>
+            <el-form ref="deployFormRef" class="control-rule-deploy" :model="state.formData" :rules="state.rules"
+                :label-width="$locale == 'zh' ? '115px' : 'auto'">
+                <el-form-item :label="$t('设置类型:')" prop="type">
+                    <el-radio-group v-model="state.formData.type">
+                        <el-radio v-for="item in simpleCtrlType" :key="item.value" :label="+item.value">{{item.label}}
+                        </el-radio>
+                    </el-radio-group>
+                </el-form-item>
+                <el-form-item v-if="state.formData.type === 2" :label="$t('代理ID:')" prop="agentIds">
+                    <el-input @input="(val) => state.formData.agentIds = val.replace('，','')" v-model="state.formData.agentIds" style="width: 100%"
+                        type="textarea" :rows="4" :placeholder="$t('请输入代理ID，多个请用英文逗号隔开')" />
+                </el-form-item>
+                <el-form-item v-if="state.formData.type === 1" :label="$t('自动层级')" prop="autoLayerId">
+                    <el-select v-model="state.formData.autoLayerId" clearable :placeholder="$t('请选择自动层级')">
+                        <el-option v-for="item in metaData.autoLevel" :key="item.id" :label="item.name" :value="item.id" />
+                    </el-select>
+                </el-form-item>
+                <el-form-item v-if="state.formData.type === 0" :label="$t('固定层级')" prop="fixedLayerId">
+                    <el-select v-model="state.formData.fixedLayerId" clearable :placeholder="$t('请选择固定层级')">
+                        <el-option v-for="item in metaData.fixedLevel" :key="item.id" :label="item.name" :value="item.id" />
+                    </el-select>
+                </el-form-item>
+                <el-form-item :label="$t('返奖率:')" prop="controlType">
+                    <el-select v-model="state.formData.controlType" :placeholder="$t('请选择返奖率')">
+                        <el-option v-for="item in metaData.controlTypeList" :key="item.value" :label="item.label" :value="Number(item.value)" />
+                    </el-select>
+                </el-form-item>
+                <!-- <el-form-item :label="$t('余额最小值限制:')" v-if="isShow">
+                    <el-input-number style="width: 196px" v-model="state.formData.minBalance" :controls="false" :precision="2" :min="0"
+                        :placeholder="$t('请输入限制金额')" @blur="inputBlur" />
+                </el-form-item> -->
+                <el-form-item :label="$t('余额最大值限制:')" v-if="isShow">
+                    <el-input-number style="width: 196px" v-model="state.formData.maxBalance" :controls="false" :precision="2" :min="0"
+                        :placeholder="$t('请输入限制金额')" />
+                </el-form-item>
+                <!-- <el-form-item v-if="state.formData.controlType && isShow" :label="$t('余额限制:')">
+                <el-input-number style="width: 196px" v-model="state.formData.balanceLimit" :controls="false" :precision="0" :min="0"
+                    :placeholder="$t('请输入限制金额')" />
+            </el-form-item> -->
+            </el-form>
+            <div v-if="isShow">
+                <div>{{$t('温馨提示：')}}</div>
+                <!-- <div>{{$t('1.建议您设置大于100%返奖率时，设置会员余额最小/大值限制，避免产生大的会员余额和打码量；')}}</div> -->
+                <div>{{$t('1.建议您设置大于100%返奖率时，设置会员余额最大值限制，避免产生大的会员余额和打码量；')}}</div>
+                <div>{{$t('2.如果您不设置，将按VIP余额限制处理。')}}</div>
+            </div>
+        </div>
+    </Dialog>
+</template>
+
+<script setup>
+import { ref, reactive, computed } from 'vue'
+import userStore from '@/store/user'
+import { addSimpleRuleData } from '@/api/risk_control'
+import { ElMessage } from 'element-plus'
+
+const emits = defineEmits(['close', 'fetchData', 'showExplain'])
+const props = defineProps({
+    metaData: {
+        type: Object,
+        default: {}
+    },
+    simpleCtrlType: {
+        type: Array,
+        default: () => []
+    },
+})
+const state = reactive({
+    formData: {},
+    rules: {
+        type: { required: true, message: $t('请选择设置类型！'), trigger: 'change' },
+        agentIds: { required: true, message: $t('请输入代理ID！'), trigger: 'blur' },
+        autoLayerId: { required: true, message: $t('请选择自动层级！'), trigger: 'change' },
+        fixedLayerId: { required: true, message: $t('请选择固定层级！'), trigger: 'change' },
+        controlType: { required: true, message: $t('请选择返奖率！'), trigger: 'change' },
+    },
+})
+const deployFormRef = ref(null)
+const dialog = ref(null)
+const userData = userStore()
+
+const isShow = computed(() => {
+    return (userData.siteInfo.commissionMode === 2 || (userData.siteInfo.commissionMode === 1 && userData.siteInfo.ctrlWin))
+})
+
+const inputBlur = () => {
+    let { minBalance, maxBalance } = state.formData
+    if (typeof minBalance !== 'number' || typeof maxBalance !== 'number') return
+    if (maxBalance < minBalance) {
+        state.formData.maxBalance = minBalance
+    }
+}
+const handleSubmit = (el) => {
+    el.validate((valid, fields) => {
+        if (valid) {
+            let { agentIds, type, controlType, autoLayerId, fixedLayerId, maxBalance, minBalance } = state.formData
+            let params = { type, controlType, maxBalance, minBalance, gameProvider: 'PGC' }
+            switch (type) {
+                case 0:
+                    params.fixedLayerId = fixedLayerId
+                    break
+                case 1:
+                    params.autoLayerId = autoLayerId
+                    break
+                case 2:
+                    params.agentIds = agentIds
+                    break
+            }
+            // if ((typeof maxBalance !== 'number' && typeof minBalance !== 'number') || (userData.siteInfo.commissionMode === 1 && !userData.siteInfo.ctrlWin)) {
+            if (userData.siteInfo.commissionMode === 1 && !userData.siteInfo.ctrlWin) {
+                delete params.maxBalance
+                delete params.minBalance
+            }
+            // } else if ((typeof maxBalance !== 'number' && typeof minBalance === 'number') ||
+            //     (typeof maxBalance === 'number' && typeof minBalance !== 'number')) {
+            //     return ElMessage.warning($t('余额限制最大值和最小值只能都设置或者都不设置！'))
+            // }
+            dialog.value.showLoading()
+            addSimpleRuleData(params).then(() => {
+                cancel()
+                emits('fetchData')
+            }).catch(() => {
+                dialog.value.closeLoading()
+            })
+        } else {
+            ElMessage.warning($t('请完善表单内容再进行提交！'))
+        }
+    })
+}
+
+const cancel = () => {
+    emits('close')
+}
+</script>
+
+<style lang="scss" >
+.control-rule-issue {
+    top: -56px;
+    right: 10px;
+}
+</style>

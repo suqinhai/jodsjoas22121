@@ -1,0 +1,29 @@
+$time-function: cubic-bezier(0.24, 0.63, 0.38, 0.85);
+
+@mixin flex($justify: center, $align: center, $wrap: wrap) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin transition($duration: 300ms, $fn: $time-function,  $target: all) {
+  transition: #{$duration} $fn $target;
+}
+
+@mixin text-over {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+
+@mixin line-clamp($number:2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: $number;
+  word-wrap:break-word;
+　word-break:break-all;
+}
+

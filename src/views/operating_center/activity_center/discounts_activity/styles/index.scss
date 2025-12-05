@@ -1,0 +1,82 @@
+.activity-deploy{
+    .time-box {
+        > .el-form-item__content {
+            display: flex;
+
+            .el-form-item {
+                width: 200px;
+                .el-date-editor--datetime {
+                    width: 200px;
+                }
+            }
+
+            .stance {
+                padding: 0 5px;
+            }
+        }
+    }
+
+    .gLevels-box {
+        margin-bottom: 10px;
+
+        .gLevels-small {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            // margin-bottom: 20px;
+        }
+
+        // .gLevels-small + .gLevels-small {
+        //     padding-top: 20px;
+        //     border-top: 1px solid #999;
+        // }
+
+        .operate {
+            margin-left: 10px;
+        }
+
+        .el-input-number {
+            width: 120px;
+            margin: 0 5px;
+        }
+
+        .gLevels-small-deploy {
+            display: flex;
+            flex-wrap: wrap;
+
+            &-ticket {
+                .label {
+                    margin-right: 3px;
+                }
+            }
+
+            &-special {
+                .gLevels-small-deploy-ticket {
+                    margin-top: 10px;
+                }
+            }
+
+            &-other .el-form-item .el-form-item__error {
+                display: none;
+            }
+        }
+    }
+
+    .gameVendor_row {
+        margin-bottom: 10px;
+
+        .cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .el-tabs .el-tabs__content {
+        height: 100%;
+    }
+
+    .el-table .cell .el-form-item .el-form-item__error {
+        display: none;
+    }
+}
