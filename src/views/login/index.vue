@@ -25,7 +25,7 @@
                 <el-form-item>
                     <el-input :disabled="loading" v-model="param.googleAuthCode" style="width: 100%" maxlength="6" :placeholder="$t('请输入6位数字谷歌验证码，没绑定可不填')" />
                 </el-form-item>
-                <el-form-item v-if="mode === 'development' || mode === 'test'">
+                <el-form-item v-if="mode === 'development' || mode === 'test' || mode === 'production'">
                     <el-input-number :disabled="loading" style="width: 100%" :placeholder="$t('请输入商户ID，不填默认为1')" v-model="merchantId" :controls="false" :precision="0" :min="1" />
                 </el-form-item>
                 <div class="login-btn">
