@@ -1,8 +1,4 @@
-/*
- * @Date: 2023-09-08 10:06:56
- * @LastEditors: yilaisai
- * @LastEditTime: 2025-01-16 11:31:04
- */
+
 import { defineStore } from 'pinia'
 import router from '../router/index.js'
 import { token, fetchTree, setPath, playOrderReminder } from '@/common/util'

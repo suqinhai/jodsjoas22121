@@ -1,8 +1,4 @@
-/*
- * @Date: 2023-09-15 12:23:18
- * @LastEditors: yilaisai
- * @LastEditTime: 2024-07-09 10:43:53
- */
+
 import {
     createRouter,
     createWebHistory,
