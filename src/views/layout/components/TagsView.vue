@@ -155,9 +155,10 @@ const handleTags = (command) => {
     position: relative;
     height: 30px;
     overflow: hidden;
-    background: #fff;
+    background: var(--app-tags-bg, #ffffff);
     padding-right: 120px;
-    box-shadow: 0 5px 10px #ddd;
+    box-shadow: 0 5px 10px rgba(245, 158, 11, 0.1);
+    border-bottom: 1px solid var(--app-tags-border, #fde68a);
 
     .el-scrollbar {
         box-sizing: border-box;
@@ -178,22 +179,23 @@ const handleTags = (command) => {
                 overflow: hidden;
                 cursor: pointer;
                 height: 23px;
-                border: 1px solid #e9eaec;
-                background: #fff;
+                border: 1px solid var(--app-tags-border, #fde68a);
+                background: var(--app-tags-item-bg, #ffffff);
                 padding: 0 5px 0 12px;
                 color: #666;
 
                 &:not(.active):hover {
-                    background: #f8f8f8;
+                    background: #fef3c7;
+                    border-color: #fbbf24;
                 }
 
                 &.active {
-                    color: #fff;
-                    border: 1px solid #409eff;
-                    background-color: #409eff;
+                    color: var(--app-tags-item-active-text, #ffffff);
+                    border: 1px solid var(--app-tags-item-active-bg, #f59e0b);
+                    background-color: var(--app-tags-item-active-bg, #f59e0b);
 
                     .tags-li-title {
-                        color: #fff;
+                        color: var(--app-tags-item-active-text, #ffffff);
                     }
                 }
 
@@ -219,9 +221,20 @@ const handleTags = (command) => {
         text-align: center;
         width: 110px;
         height: 30px;
-        background: #fff;
-        box-shadow: -3px 0 15px 3px rgba(0, 0, 0, 0.1);
+        background: var(--app-tags-bg, #ffffff);
+        box-shadow: -3px 0 15px 3px rgba(245, 158, 11, 0.1);
         z-index: 10;
+
+        :deep(.el-button--primary) {
+            background-color: var(--el-color-primary);
+            border-color: var(--el-color-primary);
+            color: #1a0f05;
+
+            &:hover {
+                background-color: var(--el-color-primary-dark-2);
+                border-color: var(--el-color-primary-dark-2);
+            }
+        }
     }
 }
 </style>

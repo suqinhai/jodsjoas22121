@@ -26,6 +26,75 @@ const alias = {
     '@api': resolve('./src/api'),
 }
 
+
+// 自定义 class 混淆插件
+function classObfuscatorPlugin() {
+    const classMap = new Map()
+    let counter = 0
+
+    const generateName = () => {
+        const chars = 'abcdefghijklmnopqrstuvwxyz'
+        let result = ''
+        let n = counter++
+        do {
+            result = chars[n % 26] + result
+            n = Math.floor(n / 26)
+        } while (n > 0)
+        return '_' + result
+    }
+
+    const getObfuscatedName = (className) => {
+        if (!classMap.has(className)) {
+            classMap.set(className, generateName())
+        }
+        return classMap.get(className)
+    }
+
+    // 排除的 class 前缀（第三方库）
+    const excludePrefixes = ['el-', 'van-', 'ant-', 'v-', 'router-']
+    const shouldExclude = (name) => excludePrefixes.some(p => name.startsWith(p))
+
+    return {
+        name: 'vite-plugin-class-obfuscator',
+        enforce: 'post',
+        apply: 'build',
+
+        generateBundle(options, bundle) {
+            for (const fileName in bundle) {
+                const chunk = bundle[fileName]
+
+                // 处理 CSS 文件 - 收集所有 class
+                if (fileName.endsWith('.css') && chunk.source) {
+                    let css = chunk.source
+                    // 匹配 CSS 选择器中的 class
+                    css = css.replace(/\.([a-zA-Z_][a-zA-Z0-9_-]*)/g, (match, className) => {
+                        if (shouldExclude(className)) return match
+                        return '.' + getObfuscatedName(className)
+                    })
+                    chunk.source = css
+                }
+            }
+
+            // 第二遍：处理 JS 文件中的 class 引用
+            for (const fileName in bundle) {
+                const chunk = bundle[fileName]
+                if (fileName.endsWith('.js') && chunk.code) {
+                    let code = chunk.code
+                    classMap.forEach((newName, oldName) => {
+                        // 替换 class="xxx" 和 :class 中的引用
+                        const regex = new RegExp(`(class=["'\`][^"'\`]*)(\\b${oldName}\\b)([^"'\`]*["'\`])`, 'g')
+                        code = code.replace(regex, `$1${newName}$3`)
+                        // 替换字符串中的 class 名
+                        const strRegex = new RegExp(`(["'\`])${oldName}\\1`, 'g')
+                        code = code.replace(strRegex, `$1${newName}$1`)
+                    })
+                    chunk.code = code
+                }
+            }
+        }
+    }
+}
+
 export default defineConfig(({ common, mode }) => {
     return {
         server: {
@@ -77,6 +146,7 @@ export default defineConfig(({ common, mode }) => {
                 inject: 'body-last', // 插入的位置
                 customDomId: '__svg__icons__dom__', // svg的id
             }),
+            classObfuscatorPlugin()
         ],
         build: {
             outDir: 'dist',

@@ -398,8 +398,8 @@ const getRedDotTips = () => {
     width: 100vw;
     height: 70px;
     font-size: 22px;
-    color: #fff;
-    background-color: #242f42;
+    color: var(--app-header-text, #fff7e6);
+    background-color: var(--app-header-bg, #1a0f05);
     display: flex;
 }
 
@@ -408,6 +408,8 @@ const getRedDotTips = () => {
     align-items: center;
     padding: 0 20px;
     white-space: nowrap;
+    color: var(--app-header-logo-text, #f59e0b);
+    font-weight: bold;
 }
 
 .header-right {
@@ -466,15 +468,15 @@ const getRedDotTips = () => {
                 width: 35px;
                 height: 3px;
                 border-radius: 2px;
-                background: #409eff;
+                background: #f59e0b;
                 transform: rotate(45deg);
-                box-shadow: 0 3px #242f42;
+                box-shadow: 0 3px var(--app-header-bg, #1a0f05);
             }
         }
 
         .title {
             font-size: 12px;
-            color: #409eff;
+            color: #f59e0b;
             line-height: 16px;
             transform: scale(0.9);
         }
@@ -508,15 +510,10 @@ const getRedDotTips = () => {
     color: #fff;
 }
 
-// .user-name {
-//     margin-left: 10px;
-// }
-
 .user-avator {
     margin-left: 20px;
 }
 
-// .site-cut {
 .site-main {
     flex-shrink: 0;
     font-size: 14px;
@@ -528,10 +525,9 @@ const getRedDotTips = () => {
         line-height: 20px;
     }
 }
-// }
 
 .el-dropdown-link {
-    color: #fff;
+    color: var(--app-header-text, #fff7e6);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -544,7 +540,6 @@ const getRedDotTips = () => {
 .timeZone {
     flex-shrink: 0;
     height: 100%;
-    // float: left;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -553,6 +548,7 @@ const getRedDotTips = () => {
         font-size: 14px;
     }
 }
+
 .site-info {
     flex-shrink: 0;
     float: left;
@@ -562,7 +558,7 @@ const getRedDotTips = () => {
     font-size: 14px;
     font-weight: normal;
     align-items: center;
-    // padding-left: 50px;
+
     &-item {
         margin-left: 30px;
     }
@@ -592,34 +588,36 @@ const getRedDotTips = () => {
         display: flex;
         flex-direction: column;
         align-items: center;
-        color: red;
+        color: #fbbf24;
     }
-    
 }
-.limitin-w{
+
+.limitin-w {
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-top: 5px;
     margin-left: 10px;
     position: relative;
-    .limiting-icon{
+
+    .limiting-icon {
         width: 23px;
         height: 23px;
         margin-right: 5px;
         margin-bottom: 2px;
-        img{
+        img {
             width: 100%;
             height: 100%;
         }
-
     }
-    .limiting-title{
+
+    .limiting-title {
         font-size: 12px;
-        color: #409eff;
+        color: #f59e0b;
         line-height: 16px;
         transform: scale(0.9);
     }
+
     .tips-num {
         top: 0px;
         right: 3px;
@@ -632,7 +630,5 @@ const getRedDotTips = () => {
         border-radius: 50%;
         background-color: #f56c6c;
     }
-    
 }
-
 </style>

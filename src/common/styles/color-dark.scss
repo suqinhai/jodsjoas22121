@@ -1,20 +1,22 @@
 .login-wrap{
-    background: #324157;
+    background: var(--app-header-bg, #1a0f05);
 }
 .plugins-tips{
-    background: #eef1f6;
+    background: var(--app-tips-bg, #fffbeb);
+    border: 1px solid var(--app-tips-border, #fbbf24);
+    color: var(--app-tips-text, #d97706);
 }
 .plugins-tips a{
-    color: #20a0ff;
+    color: #f59e0b;
 }
 
 .tags-li.active {
-    border: 1px solid #409EFF;
-    background-color: #409EFF;
+    border: 1px solid var(--app-tags-item-active-bg, #f59e0b);
+    background-color: var(--app-tags-item-active-bg, #f59e0b);
 }
 .message-title{
-    color: #20a0ff;
+    color: #f59e0b;
 }
 .collapse-btn:hover{
-    background: rgb(40,52,70);
+    background: rgba(245, 158, 11, 0.1);
 }

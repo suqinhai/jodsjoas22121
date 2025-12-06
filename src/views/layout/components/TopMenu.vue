@@ -102,7 +102,7 @@ onMounted(() => {
 .top-menu {
     display: flex;
     align-items: center;
-    background-color: #324157;
+    background-color: var(--app-menu-bg, #f59e0b);
     padding: 0 10px;
     height: 50px;
 
@@ -112,15 +112,16 @@ onMounted(() => {
         flex-shrink: 0;
 
         .el-input__wrapper {
-            background-color: #3a4a5e;
+            background-color: rgba(0, 0, 0, 0.1);
             box-shadow: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .el-input__inner {
-            color: #bfcbd9;
+            color: var(--app-menu-text, #1a0f05);
 
             &::placeholder {
-                color: #8a9aaa;
+                color: rgba(26, 15, 5, 0.6);
             }
         }
     }
@@ -137,7 +138,7 @@ onMounted(() => {
 
 .top-menu-el-menu {
     flex: 1;
-    background-color: #324157 !important;
+    background-color: var(--app-menu-bg, #f59e0b) !important;
     border-bottom: none !important;
     height: 50px;
     overflow-x: auto;
@@ -148,12 +149,12 @@ onMounted(() => {
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: #5a6a7e;
+        background-color: rgba(0, 0, 0, 0.2);
         border-radius: 2px;
     }
 
     &::-webkit-scrollbar-track {
-        background-color: #324157;
+        background-color: transparent;
     }
 
     .el-menu-item,
@@ -162,25 +163,33 @@ onMounted(() => {
         line-height: 50px !important;
         padding: 0 15px !important;
         border-bottom: none !important;
+        color: var(--app-menu-text, #1a0f05) !important;
 
         &:hover {
-            background-color: #3a4a5e !important;
+            background-color: var(--app-menu-hover-bg, rgba(255, 255, 255, 0.2)) !important;
+            color: var(--app-menu-text-hover, #ffffff) !important;
+        }
+
+        .el-sub-menu__icon-arrow {
+            color: var(--app-menu-text, #1a0f05);
         }
     }
 
     .el-menu-item.is-active {
-        background-color: #3a4a5e !important;
-        border-bottom: 2px solid #20a0ff !important;
+        background-color: var(--app-menu-active-bg, #d97706) !important;
+        color: var(--app-menu-active-text, #ffffff) !important;
+        border-bottom: none !important;
     }
 
     .el-sub-menu.is-active > .el-sub-menu__title {
-        border-bottom: 2px solid #20a0ff !important;
+        background-color: var(--app-menu-active-bg, #d97706) !important;
+        color: var(--app-menu-active-text, #ffffff) !important;
     }
 }
 
 .top-sub-menu-poppers {
     .el-menu {
-        background-color: #324157 !important;
+        background-color: var(--app-menu-bg, #f59e0b) !important;
         max-height: calc(100vh - 150px);
         overflow-y: auto;
 
@@ -189,32 +198,34 @@ onMounted(() => {
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: #5a6a7e;
+            background-color: rgba(0, 0, 0, 0.2);
             border-radius: 2px;
         }
     }
 
     .el-menu-item {
-        background-color: #324157 !important;
-        color: #bfcbd9 !important;
+        background-color: var(--app-menu-bg, #f59e0b) !important;
+        color: var(--app-menu-text, #1a0f05) !important;
         min-width: 150px;
 
         &:hover {
-            background-color: #3a4a5e !important;
+            background-color: var(--app-menu-hover-bg, rgba(255, 255, 255, 0.2)) !important;
+            color: var(--app-menu-text-hover, #ffffff) !important;
         }
 
         &.is-active {
-            color: #20a0ff !important;
-            background-color: #3a4a5e !important;
+            background-color: var(--app-menu-active-bg, #d97706) !important;
+            color: var(--app-menu-active-text, #ffffff) !important;
         }
     }
 
     .el-sub-menu__title {
-        background-color: #324157 !important;
-        color: #bfcbd9 !important;
+        background-color: var(--app-menu-bg, #f59e0b) !important;
+        color: var(--app-menu-text, #1a0f05) !important;
 
         &:hover {
-            background-color: #3a4a5e !important;
+            background-color: var(--app-menu-hover-bg, rgba(255, 255, 255, 0.2)) !important;
+            color: var(--app-menu-text-hover, #ffffff) !important;
         }
     }
 }

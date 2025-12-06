@@ -3,7 +3,7 @@ html {
 }
 body {
     height: 100%;
-    background: #f0f2f5;
+    background: var(--app-content-bg, #fffbeb);
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -25,7 +25,7 @@ ul {
   
 html {
     height: 100%;
-    background: #f0f2f5;
+    background: var(--app-content-bg, #fffbeb);
     box-sizing: border-box;
 }
   
@@ -187,7 +187,7 @@ div:focus {
 }
 
 .special {
-    color: #409eff;
+    color: #f59e0b;
 }
 
 .tag-box {
@@ -292,7 +292,7 @@ div:focus {
 }
 
 .el-table .total-row >.el-table__cell {
-    background-color: #40ceff;
+    background-color: #fef3c7;
 }
 
 .table-box {
@@ -420,10 +420,11 @@ div:focus {
 }
 
 .tips-box {
-    background: #e9f6fe;
-    border: 1px solid #49a4ea;
+    background: var(--app-tips-bg, #fffbeb);
+    border: 1px solid var(--app-tips-border, #fbbf24);
     padding: 10px 20px;
     margin-bottom: 10px;
+    color: var(--app-tips-text, #d97706);
 }
 
 .el-message {

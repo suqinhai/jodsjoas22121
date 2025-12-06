@@ -29,7 +29,7 @@ a {
     bottom: 0;
     -webkit-transition: left .3s ease-in-out;
     transition: left .3s ease-in-out;
-    background: #f0f0f0;
+    background: var(--app-content-bg, #fffbeb);
     /* overflow: auto; */
     /* width: 100%; */
 }
