@@ -109,7 +109,7 @@ const router = createRouter({
     history:
         process.env.VITE_MODE === 'development'
             ? createWebHashHistory()
-            : createWebHistory(process.env.VITE_BASE_PATH || '/'),
+            : createWebHistory(),
     routes,
 })
 

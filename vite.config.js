@@ -27,6 +27,8 @@ import vitePluginClass from './vite-plugin-class.js';
 
 export default defineConfig(({ common, mode }) => {
     const env = loadEnv(mode, path.resolve(__dirname, './env'))
+    const isPro = env.VITE_MODE === 'PRO'
+    const base = env.VITE_BASE_PATH || '/'
     return {
         server: {
             host: '0.0.0.0',
@@ -120,7 +122,7 @@ export default defineConfig(({ common, mode }) => {
         },
         cssCodeSplit: true,
         sourcemap: false,
-        base: env.VITE_BASE_PATH || '/',
+        base: base,
         root: './',
         css: {
             preprocessorOptions: {
