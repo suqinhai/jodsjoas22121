@@ -83,7 +83,7 @@
                         preview-teleported fit="contain" lazy></el-image>
                 </template>
             </el-table-column>
-            <el-table-column :label="$t('图标(定制版)')" min-width="120" align="center" v-if="userData.getTemplateType() === 4">
+            <el-table-column :label="$t('图标(C版)')" min-width="120" align="center" v-if="userData.getTemplateType() === 4">
                 <template #default="{row}">
                     <el-image v-if="!!row.CImage" :src="row.CImage" class="imgs" :preview-src-list="[row.CImage]" :crossorigin="null"
                         preview-teleported fit="contain" lazy></el-image>
@@ -133,42 +133,42 @@ const operateTypeData = [
 ]
 const otherTypeData = {
     'PG': [
-        { type: 7, key: 'nonNewPGOpen', title: $t('一键非NEWPG开启（操作后PG游戏中的非NEWPG游戏被开启）') },
-        { type: 8, key: 'nonNewPGClose', title: $t('一键非NEWPG关闭（操作后PG游戏中的非NEWPG游戏被关闭）') },
-        { type: 9, key: 'nonBPGOpen', title: $t('一键非BPG开启（操作后PG游戏中的非BPG游戏被开启）') },
-        { type: 10, key: 'nonBPGClose', title: $t('一键非BPG关闭（操作后PG游戏中的非BPG游戏被关闭）') },
+        { type: 7, key: 'nonOpen', title: $t('一键非开启（操作后PG游戏中的非游戏被开启）') },
+        { type: 8, key: 'nonClose', title: $t('一键非关闭（操作后PG游戏中的非游戏被关闭）') },
+        { type: 9, key: 'nonTTTOpen', title: $t('一键非TTT开启（操作后PG游戏中的非TTT游戏被开启）') },
+        { type: 10, key: 'nonTTTClose', title: $t('一键非TTT关闭（操作后PG游戏中的非TTT游戏被关闭）') },
         { type: 11, key: 'PGOpen', title: $t('一键PG开启（操作后PG游戏开关全部被开启）') },
         { type: 12, key: 'PGClose', title: $t('一键PG关闭（操作后PG游戏开关全部被关闭）') },
     ],
     'PGC': [
-        { type: 13, key: 'newPGAllOpen', title: $t('一键NEWPG开启（操作后NEWPG游戏开关全部被开启）') },
-        { type: 14, key: 'newPGAllClose', title: $t('一键NEWPG关闭（操作后NEWPG游戏开关全部被关闭）') },
+        { type: 13, key: 'AllOpen', title: $t('一键开启（操作后游戏开关全部被开启）') },
+        { type: 14, key: 'AllClose', title: $t('一键关闭（操作后游戏开关全部被关闭）') },
     ],
-    'BPG': [
-        { type: 15, key: 'BPGAllOpen', title: $t('一键BPG开启（操作后BPG游戏开关全部被开启）') },
-        { type: 16, key: 'BPGAllClose', title: $t('一键BPG关闭（操作后BPG游戏开关全部被关闭）') },
-        { type: 17, key: 'BPGNonNewPGOpen', title: $t('一键非NEWPG开启（操作后BPG游戏中的非NEWPG游戏全部被开启）') },
-        { type: 18, key: 'BPGNonNewPGClose', title: $t('一键非NEWPG关闭（操作后BPG游戏中的非NEWPG游戏全部被关闭）') },
+    'TTT': [
+        { type: 15, key: 'TTTAllOpen', title: $t('一键TTT开启（操作后TTT游戏开关全部被开启）') },
+        { type: 16, key: 'TTTAllClose', title: $t('一键TTT关闭（操作后TTT游戏开关全部被关闭）') },
+        { type: 17, key: 'TTTNonOpen', title: $t('一键非开启（操作后TTT游戏中的非游戏全部被开启）') },
+        { type: 18, key: 'TTTNonClose', title: $t('一键非关闭（操作后TTT游戏中的非游戏全部被关闭）') },
     ],
     'JL': [
-        { type: 19, key: 'nonNJLOpen', title: $t('一键非NEWJILI开启（操作后JILI游戏中的非NEWJILI游戏被开启）') },
-        { type: 20, key: 'nonNJLClose', title: $t('一键非NEWJILI关闭（操作后JILI游戏中的非NEWJILI游戏被关闭）') },
+        { type: 19, key: 'nonNJLOpen', title: $t('一键非开启（操作后JILI游戏中的非游戏被开启）') },
+        { type: 20, key: 'nonNJLClose', title: $t('一键非关闭（操作后JILI游戏中的非游戏被关闭）') },
         { type: 21, key: 'JLOpen', title: $t('一键JILI开启（操作后JILI游戏开关全部被开启）') },
         { type: 22, key: 'JLClose', title: $t('一键JILI关闭（操作后JILI游戏开关全部被关闭）') },
     ],
     'NJL': [
-        { type: 23, key: 'NJLAllOpen', title: $t('一键NEWJILI开启（操作后NEWJILI游戏开关全部被开启）') },
-        { type: 24, key: 'NJLAllClose', title: $t('一键NEWJILI关闭（操作后NEWJILI游戏开关全部被关闭）') },
+        { type: 23, key: 'NJLAllOpen', title: $t('一键开启（操作后游戏开关全部被开启）') },
+        { type: 24, key: 'NJLAllClose', title: $t('一键关闭（操作后游戏开关全部被关闭）') },
     ],
     'PP': [
-        { type: 25, key: 'nonNPPOpen', title: $t('一键非NEWPP开启（操作后PP游戏中的非NEWPP游戏被开启）') },
-        { type: 26, key: 'nonNPPClose', title: $t('一键非NEWPP关闭（操作后PP游戏中的非NEWPP游戏被关闭）') },
+        { type: 25, key: 'nonNPPOpen', title: $t('一键非开启（操作后PP游戏中的非游戏被开启）') },
+        { type: 26, key: 'nonNPPClose', title: $t('一键非关闭（操作后PP游戏中的非游戏被关闭）') },
         { type: 27, key: 'PPOpen', title: $t('一键PP开启（操作后PP游戏开关全部被开启）') },
         { type: 28, key: 'PPClose', title: $t('一键PP关闭（操作后PP游戏开关全部被关闭）') },
     ],
     'NPP': [
-        { type: 29, key: 'NPPAllOpen', title: $t('一键NEWPP开启（操作后NEWPP游戏开关全部被开启）') },
-        { type: 30, key: 'NPPAllClose', title: $t('一键NEWPP关闭（操作后NEWPP游戏开关全部被关闭）') },
+        { type: 29, key: 'NPPAllOpen', title: $t('一键开启（操作后游戏开关全部被开启）') },
+        { type: 30, key: 'NPPAllClose', title: $t('一键关闭（操作后游戏开关全部被关闭）') },
     ],
 }
 const state = reactive({
@@ -224,7 +224,7 @@ const statusTypeList = ref([
 ])
 
 const showData = computed(() => {
-    if (['PG', 'PGC', 'BPG', 'JL', 'NJL', 'PP', 'NPP'].includes(state.params.alias) && state.params.type === '3') {
+    if (['PG', 'PGC', 'TTT', 'JL', 'NJL', 'PP', 'NPP'].includes(state.params.alias) && state.params.type === '3') {
         return deepClone(operateTypeData).concat(otherTypeData[state.params.alias])
     } else {
         return operateTypeData
@@ -379,9 +379,9 @@ const handleEdit = (value) => {
 }
 
 const change = (value, key) => {
-    let arr1 = ['PG', 'NewPG', 'BPG']
-    let arr2 = ['JiLi', 'NewJiLi']
-    let arr3 = ['PP', 'NewPP']
+    let arr1 = ['PG', '', 'TTT']
+    let arr2 = ['JiLi', '']
+    let arr3 = ['PP', '']
     if (!value[key] || key !== 'status' || value.type !== 3 || (!arr1.includes(value.alias_) && !arr2.includes(value.alias_) && !arr3.includes(value.alias_))) return postChange(value, key)
     let arr = arr1.includes(value.alias_) ? arr1 : ( arr2.includes(value.alias_) ? arr2 : arr3)
     arr = arr.filter(item => item !== value.alias_)

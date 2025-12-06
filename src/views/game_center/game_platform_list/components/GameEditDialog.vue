@@ -39,12 +39,12 @@
                 </el-form-item>
             </template>
             <template v-if="!isCopyGame &&  userData.getTemplateType() === 4 && currentItem.id">
-                <el-form-item :label="$t('定制版LOGO(已选择)') + ':'">
+                <el-form-item :label="$t('C版LOGO(已选择)') + ':'">
                     <UploadImage disabled v-model="state.formData.activeLogo" :width="200" :height="100" :size="100" bizType="game"
                         :gameParams="getGameParams(3)" :tip="`${$t('请上传')}200*100${$t('或等比例，PNG/JPG格式小于100KB的图片')}`">
                     </UploadImage>
                 </el-form-item>
-                <el-form-item :label="$t('定制版LOGO(未选择)') + ':'" style="margin-bottom: 0">
+                <el-form-item :label="$t('C版LOGO(未选择)') + ':'" style="margin-bottom: 0">
                     <UploadImage disabled v-model="state.formData.nonActiveLogo" :width="200" :height="100" :size="100" bizType="game"
                         :gameParams="getGameParams(3)" :tip="`${$t('请上传')}200*100${$t('或等比例，PNG/JPG格式小于100KB的图片')}`">
                     </UploadImage>
@@ -76,7 +76,7 @@ const userData = userStore()
 const deployFormRef = ref(null)
 
 const isCopyGame = computed(() => {
-    return prop.currentItem.alias === 'PGC' || prop.currentItem.alias === 'BPG'
+    return prop.currentItem.alias === 'PGC' || prop.currentItem.alias === 'TTT'
 })
 
 const gameParams = computed(() => {

@@ -18,7 +18,7 @@ const SystemMessage = defineAsyncComponent(() => import("./system_message/index.
 
 const tabData = ref([
     { title: $t('消息列表'), value: 1 },
-    { title: $t('定制版系统推送'), value: 2 },
+    { title: $t('C版系统推送'), value: 2 },
 ])
 const activeTab = ref(1)
 const userData = userStore()

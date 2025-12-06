@@ -23,8 +23,8 @@ const state = reactive({
     isInit: true,
     type: 1,
     showTabList: [
-        { title: $t('定制版概览配置'), value: 1 },
-        { title: $t('定制版基础配置'), value: 2 },
+        { title: $t('C版概览配置'), value: 1 },
+        { title: $t('C版基础配置'), value: 2 },
         { title: $t('代理推广链接方式'), value: 3 },
     ]
 })

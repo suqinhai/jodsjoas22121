@@ -21,10 +21,10 @@
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-form-item :label="$t('游戏限制:')">{{$t('只可进NEWPG、BPG、NEWJILI、NEWPP游戏')}}
+            <el-form-item :label="$t('游戏限制:')">{{$t('只可进、TTT、、游戏')}}
                 <!-- <el-radio-group v-model="state.formData.playLimit">
                     <el-radio :label="0">{{$t('无')}}</el-radio>
-                    <el-radio :label="1">{{$t('游戏限制（只可进NEWPG游戏）')}}</el-radio>
+                    <el-radio :label="1">{{$t('游戏限制（只可进游戏）')}}</el-radio>
                 </el-radio-group> -->
             </el-form-item>
             <el-form-item :label="$t('禁止提现:')">

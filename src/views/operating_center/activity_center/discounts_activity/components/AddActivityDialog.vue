@@ -33,7 +33,7 @@
                 </div>
                 <el-checkbox v-if="state.tableData.length" :label="$t('是否全选')" :value="state.selectAll" @change="handleSelectAll" />
                 <span class="special" style="float: right" v-if="state.newOrgMerchant.id">{{$t('站点ID:')}}
-                    {{state.newOrgMerchant.id}}{{isClassify ? state.newOrgMerchant.custom ? '（定制版皮肤模版）' : '（普通皮肤模版）' : ''}}</span>
+                    {{state.newOrgMerchant.id}}{{isClassify ? state.newOrgMerchant.custom ? '（C版皮肤模版）' : '（普通皮肤模版）' : ''}}</span>
                 <el-table ref="tableRef" :data="state.tableData" border>
                     <el-table-column width="45" prop="type_">
                         <template #default="{ row }">

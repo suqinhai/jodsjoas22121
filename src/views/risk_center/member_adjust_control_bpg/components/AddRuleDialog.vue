@@ -1,5 +1,5 @@
 <template>
-    <!-- BPG会员调控-返奖率预设列表-新增 -->
+    <!-- TTT会员调控-返奖率预设列表-新增 -->
     <Dialog ref="dialog" width="550" :title="$t('新增')" top="10vh" buttonCenter @confirm="handleSubmit(deployFormRef)" @cancel="cancel">
         <el-form ref="deployFormRef" :model="state.formData" :rules="state.rules" :label-width="$locale == 'zh' ? '85px' : 'auto'">
             <el-form-item :label="$t('设置类型:')" prop="type">
@@ -79,7 +79,7 @@ const handleSubmit = (el) => {
     el.validate((valid, fields) => {
         if (valid) {
             let { agentIds, type, controlType, autoLayerId, fixedLayerId, balanceLimit } = state.formData
-            let params = { type, controlType, balanceLimit, gameProvider: 'BPG' }
+            let params = { type, controlType, balanceLimit, gameProvider: 'TTT' }
             switch (type) {
                 case 0:
                     params.fixedLayerId = fixedLayerId

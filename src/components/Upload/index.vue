@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-input style="display: none" v-model="modelValue" />
+        <!-- <el-input style="display: none" v-model="modelValue" /> -->
         <el-upload ref="uploadRef" class="files-upload" :multiple="isMultiple" :drag="drag" :autoUpload="false" :accept="accept"
             :before-upload="handleBeforeUpload" :show-file-list="isShowList" :limit="limit" :http-request="upload" :on-exceed="exceed"
             :on-remove="handleDelete" :on-change="fileChange" :file-list="fileList" :disabled="disabled || loading">

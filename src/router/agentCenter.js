@@ -124,7 +124,7 @@ const router = [
         component: () =>
             import('@/views/agent_center/custom_agent_config/index.vue'),
         meta: {
-            title: '定制版代理配置',
+            title: 'C版代理配置',
             permiss: 'admin.meta.itemList-52',
         },
     },
@@ -134,7 +134,7 @@ const router = [
         component: () =>
             import('@/views/agent_center/custom_invite_relation/index.vue'),
         meta: {
-            title: '定制版邀请关系',
+            title: 'C版邀请关系',
             permiss: 'merchant.custom-agent.inviteList',
         },
     },
@@ -144,7 +144,7 @@ const router = [
         component: () =>
             import('@/views/agent_center/custom_rebate_record/index.vue'),
         meta: {
-            title: '定制版返佣记录',
+            title: 'C版返佣记录',
             permiss: 'merchant.custom-agent.inviteLog',
         },
     },

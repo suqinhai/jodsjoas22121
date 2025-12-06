@@ -9,7 +9,7 @@
                 :rules="[{ required: !!state.formData.status, message: $t('请输入调控额度！'), trigger: 'blur' },{ type: 'number', min: 1, message: $t('最小值必须大于等于1！'), trigger: 'change' }]">
                 <el-input-number style="width: 100%" v-model="state.formData.minBalance" :controls="false" :precision="0" :placeholder="$t('请输入整数')" />
             </el-form-item>
-            <div>{{$t('注：设置额度后，达到的会员将进入列表，只可进入特定游戏（NewPG,NewPP,NewJILI）')}}</div>
+            <div>{{$t('注：设置额度后，达到的会员将进入列表，只可进入特定游戏（,,）')}}</div>
             
         </el-form>
     </Dialog>

@@ -1,5 +1,5 @@
 <template>
-    <!-- 代理中心-定制版返佣记录-充值返佣记录 -->
+    <!-- 代理中心-C版返佣记录-充值返佣记录 -->
     <div class="tabs-main">
         <el-form class="filter-form" :model="state.formData" inline>
             <el-form-item>

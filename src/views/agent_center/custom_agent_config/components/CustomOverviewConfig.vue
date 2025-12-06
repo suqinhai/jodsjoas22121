@@ -1,5 +1,5 @@
 <template>
-    <!-- 代理中心-定制版概览配置 -->
+    <!-- 代理中心-C版概览配置 -->
     <div class="custom-overview-config">
         <div class="title">{{ $t('模块位置排序') }}</div>
         <el-form class="filter-form">

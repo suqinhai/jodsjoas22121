@@ -20,7 +20,7 @@ const FestivalStyle = defineAsyncComponent(() => import("./festival_style/index.
 
 const tabData = [
     { title: $t('模版设置'), value: 1 },
-    { title: $t('节日风格模版'), value: 2, permissionCode: 'merchant.app.layout-festivalStyle' },
+    { title: $t('快快乐乐风格模版'), value: 2, permissionCode: 'merchant.app.layout-festivalStyle' },
 ]
 let activeTab = ref(1)
 let tab = ref('')

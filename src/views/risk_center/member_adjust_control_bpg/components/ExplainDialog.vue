@@ -1,5 +1,5 @@
 <template>
-    <!-- BPG会员调控-说明 -->
+    <!-- TTT会员调控-说明 -->
     <Dialog width="880" :title="$t('温馨提示')" top="10vh" :isShowBottomButton="false" @cancel="emits('close')">
         <div class="explain-box">
             <div class="small-box" :class="{'small-box--active': [10].includes(index)}" v-for="(item,index) in explainData" :key="index">

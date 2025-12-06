@@ -1,5 +1,5 @@
 <template>
-    <!-- BPG会员调控-数据列表（简易模式） -->
+    <!-- TTT会员调控-数据列表（简易模式） -->
     <div class="container-main">
         <el-form class="filter-form" inline :model="state.formData">
             <el-form-item :label="$t('会员ID:')">
@@ -65,7 +65,7 @@
                 <el-button v-throttle type="primary" @click="state.profitPoolShow=true">{{$t('VIP人数比例配置')}}</el-button>
             </el-form-item>
         </el-form>
-        <div class="tips-box">{{ $t('可调控厂家包括：N_BPG') }}</div>
+        <div class="tips-box">{{ $t('可调控厂家包括：N_TTT') }}</div>
         <el-table ref="tableRef" class="table-box" :data="state.tableData" border @selection-change="handleSelectionChange">
             <!-- <el-table-column v-if="isPermiss" fixed="left" type="selection" width="55" /> -->
             <el-table-column :label="$t('会员ID')" min-width="120" align="center">
@@ -210,7 +210,7 @@ const fetchData = (val = '') => {
     delete params.fixedLevel
     delete params.autoLevel
     isPermiss.value && tableRef.value && tableRef.value.clearSelection()
-    params.gameProvider = 'BPG'
+    params.gameProvider = 'TTT'
     globalVBus.$emit('globalLoading', true)
     getSimpleControlList(params).then(res => {
         let { total, list } = res.data
@@ -251,7 +251,7 @@ const handleEdit = ({ userId, username, controlType, balanceLimit }) => {
     }).then(() => {
         globalVBus.$emit('globalLoading', true)
         let obj = { userIds: userId, controlType }
-        obj.gameProvider = 'BPG'
+        obj.gameProvider = 'TTT'
         if (estimateRtp(controlType)) obj.balanceLimit = balanceLimit
         postSimpleControlData(obj).then(res => {
             fetchData()

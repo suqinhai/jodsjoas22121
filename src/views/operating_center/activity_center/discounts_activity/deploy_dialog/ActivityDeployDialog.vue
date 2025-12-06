@@ -252,7 +252,7 @@ const operateActions = computed(() => {
     }
     return arr
 })
-// 活动站点是否为定制版皮肤模版
+// 活动站点是否为C版皮肤模版
 const isCustomize = computed(() => {
     return props.itemData.merchant.custom || false
     // return ((!id || id === -1) && custom) || (id > 0 && merchant.custom)

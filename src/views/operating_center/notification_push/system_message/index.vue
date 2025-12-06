@@ -1,5 +1,5 @@
 <template>
-    <!-- 运营中心-消息推送-定制版系统推送 -->
+    <!-- 运营中心-消息推送-C版系统推送 -->
     <div class="tabs-main system-message">
         <el-form class="filter-form" inline>
             <el-form-item :label="$t('清除推送:')">

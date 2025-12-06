@@ -32,10 +32,10 @@
             <el-form-item :label="$t('定向过滤:')">
                 <el-select class="select-box" v-model="state.searchForm.isPgc" :placeholder="$t('请选择定向过滤条件')"
                     :clearable="![0,1].includes(state.searchForm.rtpStatus)" @change="selectChange">
-                    <el-option :label="$t('非NewPG、NewJiLi、NewPP')" :value="0" :disabled="[0,1].includes(state.searchForm.rtpStatus)" />
-                    <el-option label="NewPG" :value="1" />
-                    <el-option label="NewJiLi" :value="2" />
-                    <el-option label="NewPP" :value="3" />
+                    <el-option :label="$t('非、、')" :value="0" :disabled="[0,1].includes(state.searchForm.rtpStatus)" />
+                    <el-option label="" :value="1" />
+                    <el-option label="" :value="2" />
+                    <el-option label="" :value="3" />
                 </el-select>
             </el-form-item>
             <el-form-item :label="$t('子游戏名称:')">

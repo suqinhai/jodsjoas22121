@@ -1,6 +1,6 @@
 <template>
-    <!-- BPG会员调控 -->
-    <div class="container member-adjust-control-bpg pr">
+    <!-- TTT会员调控 -->
+    <div class="container member-adjust-control-TTT pr">
         <el-tabs v-model="state.activeTab">
             <el-tab-pane v-for="(item,index) in showData" :key="index" :label="item.title" :name="item.value">
             </el-tab-pane>
@@ -21,7 +21,7 @@
     </div>
 </template>
 
-<script setup name='memberAdjustControlBpg'>
+<script setup name='memberAdjustControlTTT'>
 import { defineAsyncComponent, reactive, onMounted, computed } from "vue"
 import userStore from '@/store/user'
 import { getMemberRiskControlLimit } from '@/api/risk_control'
@@ -65,10 +65,10 @@ const showData = computed(() => {
 })
 
 onMounted(() => {
-    getCommonMeta({ types: 'simpleCtrlType,bpgCtrlPools' }).then(res => {
+    getCommonMeta({ types: 'simpleCtrlType,TTTCtrlPools' }).then(res => {
         metaData = Object.assign(metaData, res.data || {})
-        metaData.ctrlPools = metaData.bpgCtrlPools
-        metaData.ctrlLoseType = metaData.bpgCtrlPools.filter((item) => { return parseInt(item.label) <= '100' })
+        metaData.ctrlPools = metaData.TTTCtrlPools
+        metaData.ctrlLoseType = metaData.TTTCtrlPools.filter((item) => { return parseInt(item.label) <= '100' })
     })
     getLevelConfig({ type: 0 }).then(res => {
         metaData.autoLevel = res.data || []
@@ -111,7 +111,7 @@ const getBalanceLimit = () => {
 </script>
 
 <style lang="scss">
-.member-adjust-control-bpg {
+.member-adjust-control-TTT {
     .explain-box {
         top: 20px;
         right: 50px;

@@ -87,7 +87,7 @@ const isCustomize = computed(() => {
 
 const hasCustomize = computed(() => {
   const { merchantId } = props.tableData[0]
-  // 如果merchantId为否 则判断commonData.merchantSiteList中是否存在定制版本
+  // 如果merchantId为否 则判断commonData.merchantSiteList中是否存在C版本
   return merchantId ? commonData.merchantSiteList.find(item => item.id == merchantId)?.custom : commonData.merchantSiteList.some(item => item.custom)
 })
 

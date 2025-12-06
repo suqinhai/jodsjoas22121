@@ -1,6 +1,6 @@
 <template>
     <div class="component-upload-image">
-        <el-input style="display: none" :value="modelValue" />
+        <!-- <el-input style="display: none" :value="modelValue" /> -->
         <el-upload ref="uploadRef" list-type="picture-card" :http-request="upload" :accept="accept" :multiple="multiple"
             :before-upload="handleBeforeUpload" :autoUpload="false" :limit="limit" :disabled="disabled" :on-exceed="handleExceed"
             :before-remove="handleDelete" :show-file-list="true" :file-list="fileList" :on-preview="handlePictureCardPreview" :on-change="fileChange"

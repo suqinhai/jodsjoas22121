@@ -1,5 +1,5 @@
 <template>
-    <!-- 品牌设置-Web页脚配置-定制版配置 -->
+    <!-- 品牌设置-Web页脚配置-C版配置 -->
     <div class="footer-custom-config">
         <el-form :model="state.formData" :disabled="state.isDisabled" label-width="auto">
             <el-form-item class="items-box" :label="$t('博彩牌照:')">

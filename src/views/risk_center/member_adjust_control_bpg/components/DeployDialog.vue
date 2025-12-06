@@ -1,5 +1,5 @@
 <template>
-    <!-- BPG会员调控-数据列表-操作 -->
+    <!-- TTT会员调控-数据列表-操作 -->
     <Dialog ref="dialog" width="500" :title="title" top="10vh" buttonCenter @confirm="handleSubmit(deployFormRef)" @cancel="cancel">
         <el-form class="member-control-deploy" ref="deployFormRef" :model="state.formData" :rules="state.rules"
             :label-width="$locale == 'zh' ? '75px' : 'auto'">
@@ -66,7 +66,7 @@ const handleSubmit = (el) => {
                 api = postSimpleControlOnekey
             }
             delete params.operateType
-            params.gameProvider = 'BPG'
+            params.gameProvider = 'TTT'
             dialog.value.showLoading()
             api(params).then(() => {
                 cancel()

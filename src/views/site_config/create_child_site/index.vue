@@ -124,7 +124,7 @@ const handleSave = (el) => {
                 params.templateConfig = JSON.stringify(templateConfig)
             }
             if (dealerType && templateConfig.type !== 4) params.dealerMode = 3
-            let text = state.templateList.some(item => item.type === 4) && !quickSite ? $t('普通皮肤模版与定制版前端风格模版无法切换使用，确定使用当前前端风格模版创建子站点吗？') : $t('确定已当前选中的配置创建子站点吗？')
+            let text = state.templateList.some(item => item.type === 4) && !quickSite ? $t('普通皮肤模版与C版前端风格模版无法切换使用，确定使用当前前端风格模版创建子站点吗？') : $t('确定已当前选中的配置创建子站点吗？')
             ElMessageBox.confirm(text, $t('提示')).then(() => {
                 globalVBus.$emit('globalLoading', true)
                 postAddSite(params).then(() => {

@@ -4,9 +4,9 @@
         <div class="rtpSetting">
             <div class="tips">{{$t('损益模式：控输（RTP＜100）')}}</div>
             <el-tabs v-model="activeTab">
-                <el-tab-pane :label="$t('bpg厂家')" :name="1"></el-tab-pane>
+                <el-tab-pane :label="$t('TTT厂家')" :name="1"></el-tab-pane>
                 <el-tab-pane :label="$t('bbgt厂家')" :name="2"></el-tab-pane>
-                <el-tab-pane :label="$t('newpg/jili/pp厂家')" :name="3"></el-tab-pane>
+                <el-tab-pane :label="$t('/jili/pp厂家')" :name="3"></el-tab-pane>
             </el-tabs>
             <div class="settingBox">
                 <el-table style="width: 500px" :data="list" border>
@@ -59,12 +59,12 @@ const title = ref($t('领取优惠后使用rtp配置'))
 const activeTab = ref(1)
 const state = reactive({
     cash: 0,
-    bpgList: [],
+    TTTList: [],
     bbgtList: [],
     commonList: [],
     ctrlPools: {
         bgtCtrlPools: [],
-        bpgCtrlPools: [],
+        TTTCtrlPools: [],
         commonList: []
     },
     params: {}
@@ -73,7 +73,7 @@ const state = reactive({
 const list = computed(() => {
     let list = []
     if (activeTab.value === 1) {
-        list = state.bpgList
+        list = state.TTTList
     } else if (activeTab.value === 2) {
         list = state.bbgtList
     } else if (activeTab.value === 3) {
@@ -87,7 +87,7 @@ const poolList = computed(() => {
     if (activeTab.value === 1) {
         return state.ctrlPools.bgtCtrlPools || []
     } else if (activeTab.value === 2) {
-        return state.ctrlPools.bpgCtrlPools || []
+        return state.ctrlPools.TTTCtrlPools || []
     } else if (activeTab.value === 3) {
         return state.ctrlPools.commonCtrlPools || []
     } else {
@@ -96,22 +96,22 @@ const poolList = computed(() => {
 })
 
 onMounted(() => {
-    getCommonMeta({ types: 'bgtCtrlPools,bpgCtrlPools,ctrlPools' }).then(res => {
+    getCommonMeta({ types: 'bgtCtrlPools,TTTCtrlPools,ctrlPools' }).then(res => {
         state.ctrlPools.bgtCtrlPools = res.data.bgtCtrlPools.filter((item) => { return parseInt(item.label) <= '100' })
-        state.ctrlPools.bpgCtrlPools = res.data.bpgCtrlPools.filter((item) => { return parseInt(item.label) <= '100' })
+        state.ctrlPools.TTTCtrlPools = res.data.TTTCtrlPools.filter((item) => { return parseInt(item.label) <= '100' })
         state.ctrlPools.commonCtrlPools = res.data.ctrlPools.filter((item) => { return parseInt(item.label) <= '100' })
     })
     handleInitData()
 })
 
 const handleInitData = () => {
-    const { cash, minBalance = '', pools = { BPG: {}, BGT: {}, PGC: {} } } = props.itemData
+    const { cash, minBalance = '', pools = { TTT: {}, BGT: {}, PGC: {} } } = props.itemData
     state.cash = cash ? 1 : 0
     state.minBalance = minBalance
     Object.entries(pools).forEach(item => {
-        if (item[0] === 'BPG') {
+        if (item[0] === 'TTT') {
             Object.entries(item[1]).forEach(v => {
-                state.bpgList.push({
+                state.TTTList.push({
                     rate: v[1],
                     pool: v[0]
                 })
@@ -144,25 +144,25 @@ const handleMinus = () => {
 }
 
 
-const handleBpgList = () => {
-    state.params['BPG'] = {}
-    let bpgSum = 0
-    let bpgPool
+const handleTTTList = () => {
+    state.params['TTT'] = {}
+    let TTTSum = 0
+    let TTTPool
     let goOn = true
-    let effectList = state.bpgList.filter(item => !!item.rate && !!item.pool)
+    let effectList = state.TTTList.filter(item => !!item.rate && !!item.pool)
     effectList.forEach(item => {
         if (!goOn) return
-        if (!bpgPool) {
-            bpgPool = item.pool
-        } else if (bpgPool && bpgPool === item.pool) {
+        if (!TTTPool) {
+            TTTPool = item.pool
+        } else if (TTTPool && TTTPool === item.pool) {
             goOn = false
             return ElMessage.warning($t('rtp概率不能重复'))
         }
-        bpgSum = add(bpgSum, item.rate)
-        state.params['BPG'][item.pool] = item.rate
+        TTTSum = add(TTTSum, item.rate)
+        state.params['TTT'][item.pool] = item.rate
     })
     if (!goOn) return goOn
-    if (bpgSum !== 100 && effectList.length) {
+    if (TTTSum !== 100 && effectList.length) {
         ElMessage.warning($t('比例总和需等于100'))
         goOn = false
     }
@@ -220,7 +220,7 @@ const handleCommonList = () => {
 }
 
 const handleSubmit = () => {
-    if (!handleBpgList()) return
+    if (!handleTTTList()) return
     if (!handlebbgtList()) return
     if (!handleCommonList()) return
     if (state.cash === 0 && !state.minBalance) return ElMessage.warning($t('请填写余额低于多少结束控制'))

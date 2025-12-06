@@ -4,11 +4,8 @@
         <el-tabs v-if="tabItem" v-model="tabItem">
             <el-tab-pane v-for="item in showTabList" :key="item.value" :label="item.title" :name="item.value"></el-tab-pane>
         </el-tabs>
-        <ActivityTableComponent v-if="tabItem === 1" :type="1" :initData="state.formData1" :metaData="metaData" :keyDatas="keyData" @setSearchData="setSearchData">
-        </ActivityTableComponent>
-        <ActivityTableComponent v-if="tabItem === 2" :type="2" :initData="state.formData2" :metaData="metaData" :keyDatas="keyData" @setSearchData="setSearchData">
-
-        </ActivityTableComponent>
+        <ActivityTableComponent v-if="tabItem === 1" :type="1" :initData="state.formData1" :metaData="metaData" :keyDatas="keyData" @setSearchData="setSearchData"></ActivityTableComponent>
+        <ActivityTableComponent v-if="tabItem === 2" :type="2" :initData="state.formData2" :metaData="metaData" :keyDatas="keyData" @setSearchData="setSearchData"></ActivityTableComponent>
         <DiscountsDetail v-if="tabItem === 3"></DiscountsDetail>
         <RechargePromotionAssociation v-if="tabItem === 4 && isHaveCustom"></RechargePromotionAssociation>
         <LotteryNumber v-if="tabItem === 5"></LotteryNumber>

@@ -28,7 +28,7 @@
                     :height="LIMIT_AS.SUBGAME_HEIGHT" :size="100"
                     :tip="`${$t('请上传')}${LIMIT_AS.SUBGAME_WIDTH}*${LIMIT_AS.SUBGAME_HEIGHT}${$t('或等比例，PNG/JPG格式小于100KB的图片')}`"></UploadImage>
             </el-form-item>
-            <el-form-item :label="$t('图标(定制版)') + ':'" v-if="!isCopyGame && userData.getTemplateType() === 4">
+            <el-form-item :label="$t('图标(C版)') + ':'" v-if="!isCopyGame && userData.getTemplateType() === 4">
                 <UploadImage v-model="formData.CImage" bizType="game" :gameParams="getGameParams" :width="170" :height="170" :size="100"
                     :tip="`${$t('请上传')}170*170${$t('或等比例，PNG/JPG格式小于100KB的图片')}`"></UploadImage>
             </el-form-item>
@@ -58,7 +58,7 @@ const formData = ref({})
 const userData = userStore()
 
 const isCopyGame = computed(() => {
-    return props.currentItem.alias === 'PGC' || props.currentItem.alias === 'BPG'
+    return props.currentItem.alias === 'PGC' || props.currentItem.alias === 'TTT'
 })
 
 onMounted(() => {

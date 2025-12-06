@@ -1,5 +1,5 @@
 <template>
-    <!-- 运营中心-消息推送-定制版系统推送-新增/编辑/详情 -->
+    <!-- 运营中心-消息推送-C版系统推送-新增/编辑/详情 -->
     <Dialog ref="dialog" width="700" :operateActions="state.operateActions" :isShowSubmit="itemData.id !== -1" :title="state.title" top="10vh"
         @confirm="handleSubmit(deployForm)" @cancel="cancel">
         <el-form ref="deployForm" class="notification-deploy" :disabled="itemData.id === -1" :rules="state.rules" :model="state.formData"

@@ -1,6 +1,6 @@
 <template>
     <!-- 代理商列表-新增代理商 -->
-    <Dialog ref="dialog" width="900" :title="$t('新增代理商-') + (isBetMode ? $t('打码模式（NEWPG、NEWjili、NEWPP）'): $t('损益模式'))" top="10vh"
+    <Dialog ref="dialog" width="900" :title="$t('新增代理商-') + (isBetMode ? $t('打码模式（、、）'): $t('损益模式'))" top="10vh"
         :operateActions="[$t('取消'), $t('提交')]" @confirm="confirmEdit(addFrom)" @cancel="cancel">
         <el-form ref="addFrom" :model="form" :label-width="$locale == 'zh' ? '170px' : 'auto'" :rules="form.rules">
             <el-form-item :label="$t('后台登录账号:')" prop="username">

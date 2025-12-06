@@ -1,5 +1,5 @@
 <template>
-    <!-- 代理中心-定制版返佣记录 -->
+    <!-- 代理中心-C版返佣记录 -->
     <div class="container">
         <el-tabs v-model="tabItem">
             <el-tab-pane v-for="item in typeList" :key="item.value" :label="item.label" :name="item.value">

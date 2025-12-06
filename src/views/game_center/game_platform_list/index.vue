@@ -84,13 +84,13 @@
                         fit="contain" />
                 </template>
             </el-table-column>
-            <el-table-column :label="$t('定制版LOGO(已选择)')" min-width="120" align="center" v-if="userData.getTemplateType() === 4">
+            <el-table-column :label="$t('C版LOGO(已选择)')" min-width="120" align="center" v-if="userData.getTemplateType() === 4">
                 <template #default="{ row }">
                     <el-image v-if="!!row.activeLogo" class="imgs" :src="row.activeLogo" :crossorigin="null" :preview-src-list="[row.activeLogo]"
                         preview-teleported fit="contain" />
                 </template>
             </el-table-column>
-            <el-table-column :label="$t('定制版LOGO(未选择)')" min-width="120" align="center"
+            <el-table-column :label="$t('C版LOGO(未选择)')" min-width="120" align="center"
                 v-if="userData.getTemplateType() === 4 && userData.getTemplateColor() === 3001">
                 <template #default="{ row }">
                     <el-image v-if="!!row.nonActiveLogo" class="imgs" :src="row.nonActiveLogo" :crossorigin="null"
@@ -169,7 +169,7 @@ import { getHomeDeploy, postHomeDeploy } from '@/api/website'
 const GameEditDialog = defineAsyncComponent(() => import("./components/GameEditDialog.vue"))
 
 const tipsObj = {
-    'PP': $t('当前打开真PP，将会关闭NEWPP的PP，是否确定？'),
+    'PP': $t('当前打开真PP，将会关闭的PP，是否确定？'),
     'CQ9': $t('当前打开真CQ9，将会关闭BBGT的CQ9，是否确定？'),
     'PP_': $t('当前打开BBGT的PP，将会关闭真PP，是否确定？'),
     'CQ9_': $t('当前打开BBGT的CQ9，将会关闭真CQ9，是否确定？'),

@@ -1,5 +1,5 @@
 <template>
-    <!-- 代理中心-定制版基础配置 -->
+    <!-- 代理中心-C版基础配置 -->
     <div class="three-agent-configuration">
         <el-form ref="addFrom" class="filter-form" :disabled="state.formDataDisabled">
             <el-form-item :label="$t('邀请返佣模式开关')">
@@ -287,7 +287,7 @@ const getConfigShareBenefit = () => {
         if (Object.values(res.data).length) {
             const obj = Object.values(res.data)[0]
             const config = obj.value ? JSON.parse(obj.value) : {}
-        // const config = res.data['定制版代理基础配置']?.config || {}
+        // const config = res.data['C版代理基础配置']?.config || {}
         state.formData.open = config.open
         state.formData.bindPhone = config.bindPhone
         state.formData.ipUnique = config.ipUnique
@@ -356,7 +356,7 @@ const saveConfigShareBenefit = (el) => {
     let params = {
         config: JSON.stringify(obj),
         type: 53,
-        // label: $t('定制版代理基础配置'),
+        // label: $t('C版代理基础配置'),
         id: state.id || '',
     }
     globalVBus.$emit('globalLoading', true)

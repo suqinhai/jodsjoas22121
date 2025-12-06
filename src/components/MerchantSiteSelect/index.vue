@@ -118,7 +118,7 @@ const showData = computed(() => {
             options: props.optionData.filter(item => !item.custom)
         },
         {
-            label: $t('定制版皮肤模版站点'),
+            label: $t('C版皮肤模版站点'),
             options: props.optionData.filter(item => item.custom)
         }
     ] : !isCanClassify.value ? commonData.merchantSiteList : [
@@ -127,7 +127,7 @@ const showData = computed(() => {
             options: commonData.merchantSiteList.filter(item => !item.custom)
         },
         {
-            label: $t('定制版皮肤模版站点'),
+            label: $t('C版皮肤模版站点'),
             options: commonData.merchantSiteList.filter(item => item.custom)
         }
     ])

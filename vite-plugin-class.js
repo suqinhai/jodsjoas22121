@@ -1,8 +1,65 @@
 // vite-plugin-class-obfuscator-simple.js
 const crypto = require('crypto');
+const path = require('path');
+const fs = require('fs');
 
 // 存储映射
 const classMap = new Map();
+
+// 全局样式类名集合（从./src/common/style/目录提取）
+let globalStyleClasses = new Set();
+
+// 在插件启动时加载全局样式类名
+function loadGlobalStyleClasses() {
+  const styleDir = path.join(process.cwd(), 'src/common/styles');
+  
+  // 如果目录不存在，直接返回
+  if (!fs.existsSync(styleDir)) {
+    console.log(`全局样式目录不存在: ${styleDir}`);
+    return;
+  }
+
+  try {
+    // 递归读取所有样式文件
+    function readStyleFiles(dir) {
+      const files = fs.readdirSync(dir, { withFileTypes: true });
+      
+      for (const file of files) {
+        const fullPath = path.join(dir, file.name);
+        
+        if (file.isDirectory()) {
+          readStyleFiles(fullPath);
+        } else if (file.name.endsWith('.css') || 
+                   file.name.endsWith('.scss') || 
+                   file.name.endsWith('.less') || 
+                   file.name.endsWith('.styl')) {
+          
+          const content = fs.readFileSync(fullPath, 'utf-8');
+          extractClassesFromCSS(content);
+        }
+      }
+    }
+
+    // 从CSS内容中提取类名
+    function extractClassesFromCSS(css) {
+      // 匹配 .className 选择器
+      const classRegex = /\.([a-zA-Z_][a-zA-Z0-9_-]*)(?![a-zA-Z0-9_-])/g;
+      let match;
+      
+      while ((match = classRegex.exec(css)) !== null) {
+        const className = match[1];
+        globalStyleClasses.add(className);
+      }
+    }
+
+    readStyleFiles(styleDir);
+    console.log(`加载了 ${globalStyleClasses.size} 个全局样式类名`);
+    // console.log('全局样式类名:', Array.from(globalStyleClasses).slice(0, 10)); // 调试用
+    
+  } catch (error) {
+    console.warn('加载全局样式类名失败:', error);
+  }
+}
 
 // 混淆函数，生成8位以字母开头的字符串
 function obfuscateClassName(original) {
@@ -16,12 +73,15 @@ function obfuscateClassName(original) {
 }
 
 export default function classObfuscatorSimplePlugin() {
+  // 在插件初始化时加载全局样式类名
+  loadGlobalStyleClasses();
+
   return {
     name: 'vite-plugin-class-obfuscator-simple',
     enforce: 'pre',
 
     transform(code, id) {
-      // 只处理.vue文件
+      // 1. 跳过非.vue文件
       if (!id.endsWith('.vue')) {
         return null;
       }
@@ -44,7 +104,13 @@ export default function classObfuscatorSimplePlugin() {
 
               const classes = classString.trim().split(/\s+/);
               const obfuscated = classes
-                .map(cls => obfuscateClassName(cls))
+                .map(cls => {
+                  // 如果类名在全局样式中存在，则不混淆
+                  if (globalStyleClasses.has(cls)) {
+                    return cls;
+                  }
+                  return obfuscateClassName(cls);
+                })
                 .join(' ');
 
               return `class="${obfuscated}"`;
@@ -63,8 +129,13 @@ export default function classObfuscatorSimplePlugin() {
           (match, styleContent) => {
             let css = styleContent;
 
-            // 替换所有映射的类名
+            // 替换所有映射的类名（除了全局样式类名）
             classMap.forEach((obfuscated, original) => {
+              // 跳过全局样式类名
+              if (globalStyleClasses.has(original)) {
+                return;
+              }
+              
               // 使用正则表达式匹配类选择器，注意要匹配完整的类名
               const regex = new RegExp(`\\.${original}(?![a-zA-Z0-9_\\-])`, 'g');
               css = css.replace(regex, `.${obfuscated}`);

@@ -11,14 +11,14 @@
             <el-form-item :label="$t('游戏限制:')">
                 <el-radio-group v-model="state.formData.playLimit">
                     <el-radio :label="0">{{$t('无')}}</el-radio>
-                    <el-radio :label="1">{{$t('游戏限制（只可进NEWPG游戏）')}}</el-radio>
+                    <el-radio :label="1">{{$t('游戏限制（只可进游戏）')}}</el-radio>
                 </el-radio-group>
             </el-form-item> -->
             <el-form-item :label="$t('添加金额:')">
                 <el-input-number style="width: 100%" v-model="state.formData.amount" :controls="false" :precision="2" :min="0.01" :placeholder="$t('请输入金额')" />
             </el-form-item>
             <div class="tips">{{$t('提示：')}}</div>
-            <div class="tips">{{$t('注册的账号全部为推广账号，且禁止提现，只可进入NEWPG、BPG、NEWJILI、NEWPP游戏，账号密码为账号后面加789')}}</div>
+            <div class="tips">{{$t('注册的账号全部为推广账号，且禁止提现，只可进入、TTT、、游戏，账号密码为账号后面加789')}}</div>
         </el-form>
     </Dialog>
 </template>

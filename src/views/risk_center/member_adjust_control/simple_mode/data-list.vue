@@ -71,7 +71,7 @@
                 <el-button v-throttle type="primary" @click="state.profitPoolShow=true">{{$t('VIP人数比例配置')}}</el-button>
             </el-form-item>
         </el-form>
-        <div class="tips-box">{{ $t('可调控厂家包括：NewPG、New Jili、New pp') }}</div>
+        <div class="tips-box">{{ $t('可调控厂家包括：、New Jili、New pp') }}</div>
         <el-table ref="tableRef" class="table-box" :data="state.tableData" border>
             <!-- <el-table-column v-if="isPermiss" fixed="left" type="selection" width="55" /> -->
             <el-table-column :label="$t('会员ID')" min-width="120" align="center">

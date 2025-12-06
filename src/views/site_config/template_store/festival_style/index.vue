@@ -1,7 +1,7 @@
 <template>
-    <!-- 模版仓库-节日风格模版 -->
+    <!-- 模版仓库-快快乐乐风格模版 -->
     <div class="container festival-style">
-        <div class="head">{{$t('节日风格模版')}}<div class="btn">
+        <div class="head">{{$t('快快乐乐风格模版')}}<div class="btn">
                 <el-button v-throttle v-if="!state.isDisabled" @click="getData">{{$t('取 消')}}</el-button>
                 <el-button v-throttle style="margin-left:15px" type="primary" v-if="!state.isDisabled" @click="handleSave">{{$t('保 存')}}</el-button>
                 <el-button v-throttle type="primary" v-if="state.isDisabled" @click="state.isDisabled = false">{{$t('修 改')}}</el-button>

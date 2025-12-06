@@ -145,7 +145,7 @@
         </el-form-item>
         <el-form-item :label="$t('限制游戏:')">
             <el-switch v-model="state.formData.rules_.canCtrlGame" />
-            <div>{{$t('注：开启后只可进控制游戏（NEWPG、NEWJILI、NEWPP）')}}</div>
+            <div>{{$t('注：开启后只可进控制游戏（、、）')}}</div>
         </el-form-item>
         <template v-if="state.formData.rules_.canCtrlGame">
             <el-form-item :label-width="$locale == 'zh' ? '180px' : 'auto'" :label="$t('控制游戏池子分配比例:')" style="margin-bottom: 10px">
@@ -193,7 +193,7 @@
             </el-form-item>
         </template>
         <el-form-item :label="$t('三方游戏限制:')" class="gameVendor_row" v-if="!state.formData.rules_.canCtrlGame">
-            {{$t('限制游戏未开启时生效，勾选可以进入，不勾选就被限制进入；NEWPG除外；白名单会员不受限制。')}}
+            {{$t('限制游戏未开启时生效，勾选可以进入，不勾选就被限制进入；除外；白名单会员不受限制。')}}
             <div>
                 <el-tabs type="border-card">
                     <el-tab-pane v-for="item in state.formData.playVendorList" :key="item.type"

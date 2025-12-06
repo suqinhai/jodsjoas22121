@@ -1,5 +1,5 @@
 <template>
-    <!-- BPG会员调控-返奖率预设列表（简易模式） -->
+    <!-- TTT会员调控-返奖率预设列表（简易模式） -->
     <div class="container-main">
         <el-form class="filter-form" inline :model="state.formData">
             <el-form-item :label="$t('设置类型:')">
@@ -152,7 +152,7 @@ const fetchData = (val = '') => {
     }
     emits('setSearchData', { key: 'formData2', data: state.formData })
     let params = { ...state.listQuery, ...state.formData }
-    params.gameProvider = 'BPG'
+    params.gameProvider = 'TTT'
     globalVBus.$emit('globalLoading', true)
     getSimpleRuleList(params).then(res => {
         let { total, list } = res.data
@@ -172,7 +172,7 @@ const handleEdit = ({ id, controlType, balanceLimit }) => {
         type: 'warning'
     }).then(() => {
         globalVBus.$emit('globalLoading', true)
-        editSimpleRuleData({ id, controlType, balanceLimit, gameProvider: 'BPG' }).then(res => {
+        editSimpleRuleData({ id, controlType, balanceLimit, gameProvider: 'TTT' }).then(res => {
             fetchData()
         }).catch(err => {
             globalVBus.$emit('globalLoading', false)
@@ -186,7 +186,7 @@ const handleDelete = (id) => {
         type: 'warning'
     }).then(() => {
         globalVBus.$emit('globalLoading', true)
-        deleteSimpleRuleData({ id, gameProvider: 'BPG' }).then(res => {
+        deleteSimpleRuleData({ id, gameProvider: 'TTT' }).then(res => {
             fetchData()
         }).catch(err => {
             globalVBus.$emit('globalLoading', false)
@@ -201,7 +201,7 @@ const handleSynchronization = (id) => {
         type: 'warning'
     }).then(() => {
         globalVBus.$emit('globalLoading', true)
-        postSyncRuleConfig({ id, gameProvider: 'BPG' }).then(res => {
+        postSyncRuleConfig({ id, gameProvider: 'TTT' }).then(res => {
             fetchData()
         }).catch(err => {
             globalVBus.$emit('globalLoading', false)

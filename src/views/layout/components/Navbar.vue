@@ -1,24 +1,11 @@
 <template>
     <!-- 顶部 -->
     <div class="header">
-        <div class="logo">{{$t('商户后台管理系统')}}</div>
         <div class="timeZone" v-if="currentTime">
             <span class="currentTime">{{ currentTime }}</span>
             <span class="utc">( UTC {{userData.merchantInfo.timeZone}} )</span>
         </div>
         <div class="site-info" v-if="Object.keys(userData.merchantInfo).length">
-            <div class="site-info-item site-info-status"
-                v-if="userData.merchantInfo.riskConfig && userData.merchantInfo.riskConfig.c && !userData.userInfo.limitMerStatus">
-                <span class="status-box" :style="{'backgroundColor': '#' + userData.merchantInfo.riskConfig.c}"></span>
-                <span class="status-title">{{$t('当前状态：')}}{{userData.merchantInfo.riskStatus_}}</span>
-            </div>
-            <div class="site-info-item site-info-amount" v-if="!userData.userInfo.limitMerAccount" :class="{'pointer': isMerchantInfo}"
-                @click="handleGo('/merchant-center/merchant-info')">
-                <!-- <span>{{$t('授信额度：')}}{{userData.merchantInfo.overdraftRatio || 0}}%</span>
-                <span>{{userData.merchantInfo.totalAmount || 0}}U</span> -->
-                <span>{{$t('可用额度')}}</span>
-                <span>{{userData.merchantInfo.totalAmount || 0}}U</span>
-            </div>
             <el-button class="site-info-item" v-if="isShowRc" v-throttle type="primary" @click="handleGo('/merchant-center/merchant-recharge')">
                 {{$t('充值U')}}</el-button>
             <div class="site-info-item currency-info" v-if="userData.merchantInfo.country === 'VN'">
@@ -28,16 +15,6 @@
         </div>
         <div class="header-right">
             <div class="header-user-con">
-                <div class="small-box" @click="handleVipLimitingGame" v-if="userData.isHasMenuPermiss('merchant.vip-balance-ctrl.levelLimitList')">
-                    <div class="limitin-w">
-                        <div class="limiting-icon">
-                            <img src="../../../assets/img/common/vip_limiting_game.png" alt="">
-                        </div>
-                        <div class="limiting-title">{{$t('vip上限')}}</div>
-                        <span class="pa tips-num" v-if="showRedDotTip"></span>
-                    </div>
-                    
-                </div>
                 <!-- 消息中心 -->
                 <div class="btn-bell pr" v-if="userData.menuList.length">
                     <el-popconfirm :teleported="false" :title="$t('开启相关配置后，站点会接收到系统推送的语音消息提醒，请确认接收！')" width="200px" :icon="WarningFilled"
@@ -87,24 +64,6 @@
                                 </el-icon>
                                 <div class="title">{{$t('商户消息')}}</div>
                                 <span class="pa tips-num" v-if="userData.merchantMessageNum">{{userData.merchantMessageNum}}</span>
-                            </div>
-                        </el-tooltip>
-                    </div>
-                    <div class="small-box" @click="handleGo('/data-report/export-download')">
-                        <div class="pr tips" style="margin-top: 3px">
-                            <el-icon color="#409eff" :size="26">
-                                <Download />
-                            </el-icon>
-                            <div class="title">{{$t('导出下载')}}</div>
-                        </div>
-                    </div>
-                    <div class="small-box" @click="handleGo('/site-config/web-config-guide')">
-                        <el-tooltip effect="dark" :content="$t('网站前台配置引导')" placement="bottom">
-                            <div class="pr tips" style="margin-top: 3px">
-                                <el-icon color="#409eff" :size="26">
-                                    <QuestionFilled />
-                                </el-icon>
-                                <div class="title">{{$t('配置引导')}}</div>
                             </div>
                         </el-tooltip>
                     </div>

@@ -17,7 +17,7 @@ import 'default-passive-events'
 
 dayjs.en.weekStart = 1
 
-document.title = $t('商户管理后台')
+document.title = $t('jsdpsjsms管理后台')
 window.globalVBus = VBus
 window.merchant_mode = process.env.VITE_MODE
 

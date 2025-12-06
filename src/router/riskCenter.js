@@ -58,12 +58,12 @@ const router = [
         },
     },
     {
-        path: '/risk-center/member-adjust-control-bpg',
-        name: 'memberAdjustControlBpg',
+        path: '/risk-center/member-adjust-control-TTT',
+        name: 'memberAdjustControlTTT',
         component: () =>
-            import('@/views/risk_center/member_adjust_control_bpg/index.vue'),
+            import('@/views/risk_center/member_adjust_control_TTT/index.vue'),
         meta: {
-            title: $t('BPG会员调控'),
+            title: $t('TTT会员调控'),
             permiss: 'admin.user-simple-ctrl.list',
         },
     },

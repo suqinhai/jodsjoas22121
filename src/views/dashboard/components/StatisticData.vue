@@ -1,101 +1,6 @@
 <template>
     <!-- 首页-数据总览 -->
     <div class="dashboard-statistic-data" :class="{'dashboard-statistic-data-en': $locale !== 'zh'}">
-        <div class="filter-box dashboard-box">
-            <div class="dashboard-box-title">
-                {{$t('数据统计')}}
-                <span class="tips">{{$t('(数据实时更新，红色代表会员赢钱)')}}</span>
-            </div>
-            <el-form class="filter-form" inline>
-                <el-form-item>
-                    <el-date-picker v-model="state.interval" type="daterange" :start-placeholder="$t('开始时间')" :end-placeholder="$t('结束时间')"
-                        :shortcuts="shortcuts" :disabled-date="disabledCurrentDateAfter" value-format="YYYY-MM-DD">
-                    </el-date-picker>
-                </el-form-item>
-                <el-form-item>
-                    <el-select style="width: 150px" v-model="state.memberType" @change="state.memberValue = ''">
-                        <el-option :label="$t('会员账号')" :value="1" />
-                        <el-option :label="$t('会员ID')" :value="2" />
-                    </el-select>
-                    <div>
-                        <el-input v-if="state.memberType === 1" v-model="state.memberValue" :placeholder="$t('请输入会员账号')" />
-                        <el-input v-if="state.memberType === 2" @input="(val) => state.memberValue = val.replace(/\D/g,'')"
-                            v-model="state.memberValue" :placeholder="$t('请输入会员ID')" />
-                    </div>
-                </el-form-item>
-                <el-form-item>
-                    <el-select style="width: 150px" v-model="state.agentType" @change="state.agentValue = ''">
-                        <el-option :label="$t('代理账号')" :value="1" />
-                        <el-option :label="$t('代理ID')" :value="2" />
-                    </el-select>
-                    <div>
-                        <el-input v-if="state.agentType === 1" v-model="state.agentValue" :placeholder="$t('请输入代理账号')" />
-                        <el-input v-if="state.agentType === 2" @input="(val) => state.agentValue = val.replace(/\D/g,'')" v-model="state.agentValue"
-                            :placeholder="$t('请输入代理ID')" />
-                    </div>
-                    <div class="item-box">
-
-                        <el-checkbox v-model="state.isDirectly">{{$t('直属代理')}}</el-checkbox>
-                    </div>
-                </el-form-item>
-                <el-form-item>
-                    <el-button v-throttle type="primary" @click="handleSearch">{{$t('查 询')}}</el-button>
-                </el-form-item>
-            </el-form>
-        </div>
-        <div class="result-box dashboard-box">
-            <div class="small-box pointer" @click="handleGo('/user-manage/all-member',3)">
-                <img src="../../../assets/img/home/register.png" alt="">
-                <div class="small-box-content">
-                    <div class="title">{{$t('注册人数')}}</div>
-                    <div class="text">{{ state.merchantData.userCount || 0  }}</div>
-                </div>
-            </div>
-            <div class="small-box pointer" @click="handleGo('/finance-center/member-recharge-config?tab=3',1)">
-                <img src="../../../assets/img/home/first_recharge.png" alt="">
-                <div class="small-box-content">
-                    <div class="title">{{$t('首充人数')}}</div>
-                    <div class="text">{{ state.merchantData.firstRechargeCount || 0  }}</div>
-                </div>
-            </div>
-            <div class="small-box pointer" @click="handleGo('/game-center/game-statistics',1)">
-                <img src="../../../assets/img/home/bet_number.png" alt="">
-                <div class="small-box-content">
-                    <div class="title">{{$t('投注人数')}}</div>
-                    <div class="text">{{ state.merchantData.userCountTotalHistory || 0 }}</div>
-                </div>
-            </div>
-            <!-- <div class="small-box" @click="handleGo('/merchant-center/merchant-info')"> -->
-            <div class="small-box">
-                <img src="../../../assets/img/home/charge_differential.png" alt="">
-                <div class="small-box-content">
-                    <div class="title">{{$t('充提差')}}</div>
-                    <div class="text" :style="{color: state.merchantData.rechargeCashDiff > 0 ? 'green' : 'red'}">
-                        {{ state.merchantData.rechargeCashDiff || 0  }}</div>
-                </div>
-            </div>
-            <div class="small-box pointer" @click="handleGo('/operating-center/activity-center?tab=3',1)">
-                <img src="../../../assets/img/home/discounts.png" alt="">
-                <div class="small-box-content">
-                    <div class="title">{{$t('优惠')}}</div>
-                    <div class="text" style="color: red">{{ state.merchantData.discountAmount || 0  }}</div>
-                </div>
-            </div>
-            <div class="small-box pointer" @click="handleGo('/operating-center/activity-center?tab=3&tradeType=3',1)">
-                <img src="../../../assets/img/home/backwater.png" alt="">
-                <div class="small-box-content">
-                    <div class="title">{{$t('返水')}}</div>
-                    <div class="text" style="color: red">{{ state.merchantData.rebateAmount || 0  }}</div>
-                </div>
-            </div>
-            <div class="small-box pointer" @click="handleGo('/agent/receive-record',-1)">
-                <img src="../../../assets/img/home/commission.png" alt="">
-                <div class="small-box-content">
-                    <div class="title">{{$t('代理佣金')}}</div>
-                    <div class="text" style="color: red">{{ state.merchantData.agentCommission || 0  }}</div>
-                </div>
-            </div>
-        </div>
         <div class="site-data">
             <div class="small-box">
                 <div class="small-box-head">
@@ -136,12 +41,6 @@
                         <div class="text total">{{$t('有效投注')}}</div>
                         <div class="text total">{{$t('投注人数')}}</div>
                         <div class="text total">{{$t('游戏输赢')}}</div>
-                        <div class="text title">{{$t('NEWPG投注')}}</div>
-                        <div class="text title">{{$t('NEWPG投注人数')}}</div>
-                        <div class="text title">{{$t('NEWPG游戏输赢')}}</div>
-                        <div class="text title">{{$t('NEWJILI投注')}}</div>
-                        <div class="text title">{{$t('NEWJILI投注人数')}}</div>
-                        <div class="text title">{{$t('NEWJILI游戏输赢')}}</div>
                     </div>
                     <div class="main-right">
                         <div class="text value" @click="handleGo('/game-center/bet-log?tab=1',2)">{{ state.merchantData.validCoinTotal || 0  }}</div>

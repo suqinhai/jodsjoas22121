@@ -9,7 +9,7 @@
                     <el-button v-throttle type="primary" v-if="!state.isDisabled" @click="handleSave(deployForm)">{{$t('保 存')}}</el-button>
                 </div>
             </div>
-            <div class="tips" v-if="state.showList[4]">{{$t('注：定制版主题模版只能在创建子站点时选择使用，且选择使用后无法再切换回普通主题模版！')}}</div>
+            <div class="tips" v-if="state.showList[4]">{{$t('注：C版主题模版只能在创建子站点时选择使用，且选择使用后无法再切换回普通主题模版！')}}</div>
             <el-tabs v-model="state.tabItem" @tab-click="tabClick">
                 <el-tab-pane v-for="item in Object.keys(state.showList)" :key="item"
                     :label="getTabText(item) + (+item === state.templateConfig.type ? $t('（已选择）') : '')" :name="+item">
@@ -158,7 +158,7 @@ const handleSubmit = (params) => {
 const confirmChange = (params) => {
     ElMessageBox.confirm(
         state.templateConfig.type === 5 ? `<div>
-        <p>${$t('当前切换为自然风样式，请注意配置规格图片；')}</p>
+        <p>${$t('当前切换为D样式样式，请注意配置规格图片；')}</p>
         <p>${$t('优惠活动列表-活动宣传图片（656*176或等比例，png、JPG、gif格式）')}</p>
         <p>${$t('宣传管理-大厅banner图片（650*285或等比例，png、JPG、gif格式）')}</p>
         </div>` : `<div>

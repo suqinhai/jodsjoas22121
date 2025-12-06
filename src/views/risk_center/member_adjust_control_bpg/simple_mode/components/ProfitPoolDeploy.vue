@@ -1,5 +1,5 @@
 <template>
-    <!-- BPG会员调控-数据列表（专业模式）-VIP人数比例配置/自动层级池子配置 -->
+    <!-- TTT会员调控-数据列表（专业模式）-VIP人数比例配置/自动层级池子配置 -->
     <Dialog ref="dialog" width="1000" :title="controlType === 1 ? $t('VIP人数比例配置'): $t('自动层级池子配置')" top="5vh" :isShowSubmit="false" @cancel="cancel">
         <div class="profit-pool">
             <div class="head2">
@@ -82,7 +82,7 @@ const getData = () => {
     dialog.value.showLoading()
     getControlPoolConfig({
         type: props.controlType,
-        gameProvider: 'BPG'
+        gameProvider: 'TTT'
     }).then(({ code, data }) => {
         if (code === 0 && data) {
             let { config = {} } = data
@@ -159,7 +159,7 @@ const handleSubmit = (el) => {
                 params = obj
             }
             dialog.value.showLoading()
-            postControlPoolConfig({ value: JSON.stringify(params), type: props.controlType, gameProvider: 'BPG' }).then(() => {
+            postControlPoolConfig({ value: JSON.stringify(params), type: props.controlType, gameProvider: 'TTT' }).then(() => {
                 getData()
             }).catch(() => {
                 dialog.value.closeLoading()

@@ -128,7 +128,7 @@ const getHomeData = () => {
                 }
             })
         }
-        // 自然风版
+        // D样式版
         if ([4001, 4002, 4003].includes(userData.getTemplateColor())) {
             state.tableData.forEach((item, index) => {
                 item.sort = index + 1
