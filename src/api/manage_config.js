@@ -1,9 +1,4 @@
-/*
- * @Author: yilaisai
- * @Date: 2024-12-17 10:07:35
- * @LastEditors: yilaisai
- * @LastEditTime: 2025-01-16 10:50:57
- */
+
 import $http from '../common/util/http'
 
 // 获取操作日志列表

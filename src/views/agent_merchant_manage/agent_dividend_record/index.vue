@@ -1,9 +1,4 @@
-<!--
- * @Author: yilaisai
- * @Date: 2024-07-09 10:44:30
- * @LastEditors: yilaisai
- * @LastEditTime: 2024-07-16 19:07:19
--->
+
 <template>
     <!-- 线下代理分红记录 -->
     <div class="container agent-dividend-record-page">

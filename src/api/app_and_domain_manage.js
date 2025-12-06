@@ -1,9 +1,4 @@
-/*
- * @Author: yilaisai
- * @Date: 2024-11-12 15:26:40
- * @LastEditors: yilaisai
- * @LastEditTime: 2024-11-19 17:57:35
- */
+
 import $http from '../common/util/http'
 
 // 域名管理列表（前台/后台）

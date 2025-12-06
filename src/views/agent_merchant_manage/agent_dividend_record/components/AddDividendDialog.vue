@@ -1,9 +1,4 @@
-<!--
- * @Author: yilaisai
- * @Date: 2024-07-09 16:42:06
- * @LastEditors: yilaisai
- * @LastEditTime: 2024-07-17 20:32:17
--->
+
 <template>
     <Dialog ref="dialog" width="450" :title="state.title" buttonCenter top="15vh" @confirm="handleSubmit(addFrom)" @cancel="cancel">
         <el-form ref="addFrom" :rules="rules" :model="state.formData" :label-width="$locale == 'zh' ? '85px' : 'auto'">

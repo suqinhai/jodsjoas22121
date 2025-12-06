@@ -1,9 +1,4 @@
-<!--
- * @Author: yilaisai
- * @Date: 2025-01-08 17:03:51
- * @LastEditors: yilaisai
- * @LastEditTime: 2025-01-10 10:42:37
--->
+
 <template>
     <Dialog ref="dialog" width="600" title="可操作站点数" top="10vh" :isShowBottomButton="false" @cancel="cancel">
         <el-table class="table-box" :data="state.formData" border>

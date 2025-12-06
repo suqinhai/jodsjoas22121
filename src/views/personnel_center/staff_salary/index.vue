@@ -1,9 +1,4 @@
-<!--
- * @Author: yilaisai
- * @Date: 2025-01-07 19:04:52
- * @LastEditors: yilaisai
- * @LastEditTime: 2025-01-14 12:14:34
--->
+
 <template>
     <!-- 人员工资 -->
     <div class="container staff-salary">

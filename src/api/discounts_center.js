@@ -1,9 +1,4 @@
-/*
- * @Author: yilaisai
- * @Date: 2024-01-04 18:24:04
- * @LastEditors: yilaisai
- * @LastEditTime: 2024-01-08 11:52:52
- */
+
 import $http from '../common/util/http'
 
 // 优惠中心-活动列表

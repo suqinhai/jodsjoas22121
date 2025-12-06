@@ -1,8 +1,4 @@
-<!--
- * @Date: 2023-11-15 12:36:20
- * @LastEditors: yilaisai
- * @LastEditTime: 2024-02-28 16:22:08
--->
+
 <template>
     <el-dialog v-model="visible" modal-class="tips-dialog" width="400px" :show-close="false" top="10vh" :close-on-click-modal="false" :title="title"
         :append-to-body="true" center>

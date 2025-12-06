@@ -1,9 +1,4 @@
-<!--
- * @Author: yilaisai
- * @Date: 2025-04-18 10:36:14
- * @LastEditors: yilaisai
- * @LastEditTime: 2025-04-18 11:00:26
--->
+
 <template>
     <!-- 站点配置-客服配置 -->
     <div class="tabs service_manage">

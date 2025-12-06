@@ -1,9 +1,4 @@
-/*
- * @Author: yilaisai
- * @Date: 2023-12-05 15:58:22
- * @LastEditors: yilaisai
- * @LastEditTime: 2025-01-16 12:02:04
- */
+
 import $http from '../common/util/http'
 
 // 获取会员列表

@@ -1,8 +1,4 @@
-/*
- * @Date: 2023-08-25 16:33:49
- * @LastEditors: Sai
- * @LastEditTime: 2023-09-22 15:30:41
- */
+
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'

@@ -1,9 +1,4 @@
-<!--
- * @Author: yilaisai
- * @Date: 2025-01-16 11:30:47
- * @LastEditors: yilaisai
- * @LastEditTime: 2025-01-16 11:53:26
--->
+
 <template>
     <!-- 所有会员-批量修改层级 -->
     <Dialog ref="dialog" :title="$t('批量修改层级')" buttonCenter top="15vh" width="500" @confirm="handleSubmit(operateForm)" @cancel="cancel">

@@ -1,8 +1,4 @@
-/*
- * @Date: 2023-09-19 13:00:05
- * @LastEditors: Sai
- * @LastEditTime: 2023-09-20 09:51:49
- */
+
 import $http from '../common/util/http'
 
 // 登录

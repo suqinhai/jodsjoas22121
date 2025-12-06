@@ -1,9 +1,4 @@
-/*
- * @Author: yilaisai
- * @Date: 2024-07-09 16:14:15
- * @LastEditors: yilaisai
- * @LastEditTime: 2024-07-09 16:57:30
- */
+
 import $http from '../common/util/http'
 
 // 代理列表

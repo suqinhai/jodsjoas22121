@@ -1,8 +1,4 @@
-<!--
- * @Date: 2023-11-15 16:04:34
- * @LastEditors: yilaisai
- * @LastEditTime: 2024-01-12 12:07:44
--->
+
 <template>
     <div class="guide-dialog-page">
         <div class="floatGuide" v-if="!visible" @click="visible = true">

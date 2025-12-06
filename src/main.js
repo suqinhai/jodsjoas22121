@@ -1,8 +1,4 @@
-/*
- * @Date: 2023-08-25 16:33:49
- * @LastEditors: Sai
- * @LastEditTime: 2023-11-03 20:18:52
- */
+
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { dayjs } from 'element-plus'

@@ -1,9 +1,4 @@
-/*
- * @Author: yilaisai
- * @Date: 2024-09-25 15:25:48
- * @LastEditors: yilaisai
- * @LastEditTime: 2025-01-16 10:49:18
- */
+
 const router = [
     {
         path: '/personnel-center',

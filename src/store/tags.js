@@ -1,8 +1,4 @@
-/*
- * @Date: 2023-10-11 18:36:51
- * @LastEditors: yilaisai
- * @LastEditTime: 2024-01-04 16:14:28
- */
+
 import { defineStore } from 'pinia'
 
 const useTagsStore = defineStore('tags', {

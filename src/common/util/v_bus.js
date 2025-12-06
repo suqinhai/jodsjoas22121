@@ -1,8 +1,4 @@
-/*
- * @Date: 2023-08-26 14:53:53
- * @LastEditors: Sai
- * @LastEditTime: 2023-08-26 17:53:18
- */
+
 export class Bus {
     data = {}
     aliveCache = []

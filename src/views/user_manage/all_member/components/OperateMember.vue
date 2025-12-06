@@ -1,9 +1,4 @@
-<!--
- * @Author: yilaisai
- * @Date: 2025-01-16 11:30:47
- * @LastEditors: yilaisai
- * @LastEditTime: 2025-01-16 11:54:12
--->
+
 <template>
     <!-- 所有会员-操作会员 -->
     <Dialog ref="dialog" width="550" :title="$t('操作')" top="15vh" @confirm="handleSubmit(operateForm)" @cancel="cancel">

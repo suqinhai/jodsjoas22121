@@ -1,8 +1,4 @@
-/*
- * @Date: 2023-09-15 12:29:22
- * @LastEditors: yilaisai
- * @LastEditTime: 2024-06-14 20:04:26
- */
+
 import $http from '../common/util/http'
 
 // 商户充值产品档位列表

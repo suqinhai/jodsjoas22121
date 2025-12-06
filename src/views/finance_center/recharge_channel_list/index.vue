@@ -1,9 +1,4 @@
-<!--
- * @Author: yilaisai
- * @Date: 2024-11-18 10:01:42
- * @LastEditors: yilaisai
- * @LastEditTime: 2024-11-20 18:21:18
--->
+
 <template>
     <!-- 充值通道列表 -->
     <div class="container recharge-channel-list-page">

@@ -1,9 +1,4 @@
-<!--
- * @Author: yilaisai
- * @Date: 2025-04-18 10:36:14
- * @LastEditors: yilaisai
- * @LastEditTime: 2025-04-18 15:24:07
--->
+
 <template>
     <!-- 站点配置-客服配置-首页悬浮球配置-修改 -->
     <Dialog ref="dialog" width="750" buttonCenter :title="$t('修改')" top="5vh" @confirm="handleSubmit" @cancel="cancel">

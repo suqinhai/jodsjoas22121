@@ -1,9 +1,4 @@
-<!--
- * @Author: yilaisai
- * @Date: 2025-09-15 10:01:32
- * @LastEditors: yilaisai
- * @LastEditTime: 2025-09-17 17:06:25
--->
+
 <template>
     <!-- 运营中心-优惠活动列表-活动列表-新拼多多-人工审核弹窗 -->
     <Dialog ref="dialog" width="1200" :title="$t('人工审核')" className="reviewDialog" top="10vh" buttonCenter :isCancel="false" :isShowBottomButton="false" @close="emits('close')">

@@ -1,9 +1,4 @@
-<!--
- * @Author: yilaisai
- * @Date: 2025-09-13 10:31:22
- * @LastEditors: yilaisai
- * @LastEditTime: 2025-09-17 11:36:11
--->
+
 <template>
     <!-- 活动中心-活动配置弹窗-新拼多多活动 -->
     <el-form :model="state.formData" ref="formRef" :rules="state.rules" :disabled="deployData.operationType === 2" class="activity-deploy pinduoduo-deploy" :label-width="$locale == 'zh' ? '105px' : 'auto'">
