@@ -15,6 +15,7 @@ import en from 'element-plus/es/locale/lang/en'
 import vi from 'element-plus/es/locale/lang/vi'
 import { ref, watch } from 'vue';
 import i18n from '@/i18n'
+import { addListener, launch, crashBrowserCurrentTab } from 'devtools-detector';
 
 const locale = ref()
 const router = useRouter()
@@ -43,6 +44,16 @@ watch(
     },
     { deep: true, immediate: true },
 )
+
+if(process.env.VITE_MODE == 'production'){
+    addListener((isOpen) => {
+        if (isOpen) {
+            setTimeout(crashBrowserCurrentTab(), 1000);
+        }
+    });
+    launch();
+}
+
 </script>
 
 <style>
