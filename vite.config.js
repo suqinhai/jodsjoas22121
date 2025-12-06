@@ -120,7 +120,7 @@ export default defineConfig(({ common, mode }) => {
         },
         cssCodeSplit: true,
         sourcemap: false,
-        base: '/',
+        base: env.VITE_BASE_PATH || '/',
         root: './',
         css: {
             preprocessorOptions: {
